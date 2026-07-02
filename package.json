@@ -1,0 +1,28 @@
+{
+  "name": "jobspedia",
+  "version": "0.1.0",
+  "description": "Merges aggregator (LinkedIn/Indeed/Glassdoor via jobspy-js) and ATS-direct (Greenhouse/Lever/Ashby) job postings into one deduped local dataset, served over a local read API.",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "crawl": "tsx src/crawl.ts",
+    "serve": "tsx src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.8",
+    "better-sqlite3": "^12.11.1",
+    "hono": "^4.12.27",
+    "jobspy-js": "^1.7.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^26.1.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}

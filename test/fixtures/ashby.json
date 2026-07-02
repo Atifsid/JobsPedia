@@ -1,0 +1,40 @@
+{
+  "jobs": [
+    {
+      "id": "job-1",
+      "title": "Staff Software Engineer",
+      "location": "New York, NY (HQ)",
+      "isRemote": false,
+      "publishedAt": "2026-06-11T17:21:26.410+00:00",
+      "jobUrl": "https://jobs.ashbyhq.com/acme/job-1",
+      "applyUrl": "https://jobs.ashbyhq.com/acme/job-1/application",
+      "descriptionPlain": "Own the platform.",
+      "descriptionHtml": "<p>Own the platform.</p>",
+      "address": {
+        "postalAddress": {
+          "addressLocality": "New York City",
+          "addressRegion": "NY",
+          "addressCountry": "USA"
+        }
+      },
+      "compensation": {
+        "summaryComponents": [
+          { "compensationType": "Salary", "minValue": 200000, "maxValue": 260000, "currencyCode": "USD" }
+        ]
+      }
+    },
+    {
+      "id": "job-2",
+      "title": "Recruiting Coordinator",
+      "location": "Remote (US)",
+      "isRemote": true,
+      "publishedAt": "2026-05-01T00:00:00.000+00:00",
+      "jobUrl": "https://jobs.ashbyhq.com/acme/job-2",
+      "applyUrl": "https://jobs.ashbyhq.com/acme/job-2/application",
+      "descriptionPlain": "Support hiring.",
+      "descriptionHtml": "<p>Support hiring.</p>",
+      "address": null,
+      "compensation": null
+    }
+  ]
+}

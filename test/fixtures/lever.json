@@ -1,0 +1,26 @@
+[
+  {
+    "id": "abc-123",
+    "text": "Senior Backend Engineer",
+    "hostedUrl": "https://jobs.lever.co/acme/abc-123",
+    "applyUrl": "https://jobs.lever.co/acme/abc-123/apply",
+    "country": "US",
+    "workplaceType": "remote",
+    "createdAt": 1780000000000,
+    "descriptionPlain": "Join our backend team.",
+    "categories": { "location": "Remote - US", "team": "Engineering", "department": "R&D" },
+    "salaryRange": { "min": 150000, "max": 190000, "currency": "USD" }
+  },
+  {
+    "id": "def-456",
+    "text": "Sales Development Rep",
+    "hostedUrl": "https://jobs.lever.co/acme/def-456",
+    "applyUrl": "https://jobs.lever.co/acme/def-456/apply",
+    "country": "US",
+    "workplaceType": "onsite",
+    "createdAt": 1781000000000,
+    "descriptionPlain": "Drive pipeline growth.",
+    "categories": { "location": "New York, NY", "team": "Sales" },
+    "salaryRange": null
+  }
+]

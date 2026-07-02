@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "id": 111,
+      "title": "Software Engineer, Backend",
+      "absolute_url": "https://boards.greenhouse.io/acme/jobs/111",
+      "company_name": "Acme Corp",
+      "location": { "name": "San Francisco, CA" },
+      "content": "&lt;p&gt;Build great things.&lt;/p&gt;&lt;p&gt;Remote friendly.&lt;/p&gt;",
+      "first_published": "2026-06-01T10:00:00-04:00",
+      "updated_at": "2026-06-02T10:00:00-04:00"
+    },
+    {
+      "id": 222,
+      "title": "Product Designer",
+      "absolute_url": "https://boards.greenhouse.io/acme/jobs/222",
+      "company_name": "Acme Corp",
+      "location": { "name": "Remote" },
+      "content": "<p>Design things.</p>",
+      "first_published": null,
+      "updated_at": "2026-05-20T08:00:00-04:00"
+    }
+  ]
+}
