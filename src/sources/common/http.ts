@@ -37,7 +37,7 @@ async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 export async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   return withRetry(async () => {
-    const res = await fetch(url, init);
+    const res = init ? await fetch(url, init) : await fetch(url);
     if (!res.ok) throw new HttpError(res.status, url);
     return (await res.json()) as T;
   });
