@@ -50,11 +50,22 @@ src/
   schema.ts          # Zod Job schema + inferred types (single source of truth)
   sources/
     jobspy.ts        # adapter: jobspy-js output -> Job[]
+    common/           # shared, source-agnostic helpers (http retry, html/location/
+                      # salary/date parsing, pagination, per-record error isolation,
+                      # bounded concurrency) — used by every ATS provider
     ats/
-      base.ts        # AtsScraper interface + shared fetch/normalize helpers
+      base.ts        # AtsScraper interface only
       greenhouse.ts  # one file per ATS platform
       lever.ts
       ashby.ts
+      smartrecruiters.ts
+      workable.ts
+      recruitee.ts
+      comeet.ts
+      breezyhr.ts
+      jobscore.ts
+      personio.ts
+      bamboohr.ts
       index.ts       # registry: exported list of all ATS scrapers
   dedupe.ts          # dedupeAndMerge(jobs): Job[]
   db.ts              # SQLite init/migrations, upsert, markStale
@@ -165,6 +176,13 @@ Most ATS platforms expose public JSON, so a scraper is small.
 2. Register it in `src/sources/ats/index.ts`.
 3. Add the company slugs to crawl in `config.ts`.
 4. Add a test with a recorded fixture (never hit the network in tests).
+
+Shared helpers live in `src/sources/common/` — reach for `fetchJson`/`fetchText`
+(retry-on-transient-failure built in), `parseLocation`, `stripHtml`, `sanitizeSalary`,
+`humanizeSlug`, `toIsoDate`, `paginate` (offset/limit pagination), `mapSkipInvalid`
+(drop one bad record without failing the whole fetch), and `mapWithConcurrency`
+(bounded-parallelism per-record detail fetches) before writing anything new — don't
+duplicate what's already there.
 
 Use the Python `jobhive` scrapers (`stapply-ai/ats-scrapers`) as the spec for each
 platform's endpoint and field mapping — each is a ~50-line `fetch()`. Port the logic,

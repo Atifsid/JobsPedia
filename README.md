@@ -5,8 +5,9 @@ API:
 
 1. **Aggregator boards** (LinkedIn, Indeed, Glassdoor, …) via the `jobspy-js` npm
    package.
-2. **ATS-direct** sources (Greenhouse, Lever, Ashby) via thin hand-written fetchers
-   that hit each platform's public JSON API.
+2. **ATS-direct** sources (Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
+   Recruitee, Comeet, BreezyHR, JobScore, Personio, BambooHR) via thin hand-written
+   fetchers that hit each platform's public JSON/XML API.
 
 Both are normalized into one schema, deduplicated, written to a local SQLite file,
 and exposed via `POST /jobs/search`. See `CLAUDE.md` for the full architecture,
@@ -106,14 +107,19 @@ choices made:
 All verified live while building this project (each returns a non-empty job list at
 the time of writing — see `src/config.ts`):
 
-| Platform   | Slugs |
-|------------|-------|
-| Greenhouse | `stripe`, `airbnb`, `figma`, `cloudflare` |
-| Lever      | `gohighlevel`, `q-ctrl`, `achievers` |
-| Ashby      | `ramp`, `linear`, `notion` |
-
-A local `npm run crawl -- --only ats` against this seed list currently pulls in
-**1,552 active jobs** across all three ATS platforms.
+| Platform        | Slugs |
+|-----------------|-------|
+| Greenhouse      | `stripe`, `airbnb`, `figma`, `cloudflare` |
+| Lever           | `gohighlevel`, `q-ctrl`, `achievers` |
+| Ashby           | `ramp`, `linear`, `notion` |
+| SmartRecruiters | `visa` |
+| Workable        | `jobrack` |
+| Recruitee       | `jobs` |
+| BreezyHR        | `new-incentives` |
+| JobScore        | `jobscore` |
+| Personio        | `personio` |
+| Comeet          | `61.003:16358C6EF2C61631639B558C0429` |
+| BambooHR        | `soundstripe` |
 
 ## Project layout
 
