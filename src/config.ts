@@ -34,6 +34,7 @@ export const atsSeeds: AtsSeed[] = [
   { platform: "ashby", slug: "ramp" },
   { platform: "ashby", slug: "linear" },
   { platform: "ashby", slug: "notion" },
+  { platform: "workable", slug: "jobrack" },
 ];
 
 /** Search terms used to seed the (opt-in, off-by-default) aggregator crawl. */
