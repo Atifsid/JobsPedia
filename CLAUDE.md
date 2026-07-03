@@ -72,6 +72,14 @@ src/
       remoteok.ts
       remotive.ts
       index.ts       # registry: exported list of all API providers
+  discovery/
+    ycombinator.ts    # YC Algolia company-directory fetch (paginated, isHiring:true)
+    detectAts.ts       # career-page probing -> ATS platform/slug detection
+    pipeline.ts          # discovery orchestration, dependency-injected for tests
+  seeds/
+    store.ts            # seed JSON file schema + read/write/list
+    <platform>.json      # one file per ATS platform, committed to git (source: "manual" | "yc-discovery")
+  scope.ts                # --scope flag parsing + seed filtering for crawl.ts
   dedupe.ts          # dedupeAndMerge(jobs): Job[]
   db.ts              # SQLite init/migrations, upsert, markStale
   crawl.ts           # orchestrator — run sources, normalize, dedupe, upsert (cron entry)
@@ -80,6 +88,8 @@ src/
   config.ts          # what to crawl: search terms + ATS company slugs
 data/
   jobs.db            # gitignored
+scripts/
+  discover-seeds.ts # npm run discover-seeds — grows src/seeds/*.json from YC's directory
 ```
 
 ## Commands
@@ -88,6 +98,8 @@ data/
 npm run crawl                 # full crawl -> jobs.db
 npm run crawl -- --only ats   # crawl only ATS sources
 npm run crawl -- --only aggregators
+npm run crawl -- --scope <name>  # filter ATS seeds by YC industry/tag
+npm run discover-seeds           # grow src/seeds/*.json from YC's company directory
 npm run serve                 # start the read API on :8080
 npm run typecheck             # tsc --noEmit
 npm test

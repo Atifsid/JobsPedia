@@ -35,6 +35,9 @@ npm run crawl                 # ATS + API crawl (same as --only ats; aggregators
 npm run crawl -- --only ats   # same as bare npm run crawl — ATS + API providers
 npm run crawl -- --only apis  # API-only crawl (RemoteOK, Remotive)
 npm run crawl -- --only aggregators   # jobspy-js crawl (LinkedIn/Indeed/Glassdoor)
+npm run crawl -- --scope <name>       # filter ATS seeds by YC industry/tag before crawling
+npm run discover-seeds                # grow src/seeds/*.json from YC's company directory
+npm run discover-seeds -- --limit 50  # cap how many YC companies get probed this run
 npm run serve                 # start the read API on :8080
 npm run typecheck             # tsc --noEmit
 npm test                      # vitest
@@ -102,6 +105,22 @@ choices made:
   doesn't say so explicitly, but per the DB lifecycle rules (vanished jobs are marked
   inactive, never deleted), search always excludes inactive rows — there's no request
   field to opt into seeing stale listings.
+- **ATS seeds are discovered from YC's directory, not the full company universe.** `npm run
+  discover-seeds` only probes YC's `isHiring: true` companies (Y Combinator's own directory,
+  not a general company database) via their public Algolia search index. Growing coverage
+  beyond YC-backed companies is a future extension of the same pipeline
+  (`src/discovery/pipeline.ts`), not part of this phase.
+- **`detectAts`'s ATS domain patterns are hand-maintained, and only 3 are live-verified.**
+  Greenhouse/Lever/Ashby were confirmed against real YC companies during R&D; the other
+  platforms follow each ATS's own known public-board URL convention but haven't all been
+  spot-checked against a live company yet. `comeet` is excluded from auto-discovery entirely —
+  its `fetch()` needs a per-company token embedded in the careers page's JS state, not a slug
+  regex can't derive from the URL alone.
+- **`--scope` skips the ATS staleness check.** `markStale()` (`src/db.ts`) has no way to scope
+  itself to "only the seeds this run intended to crawl" without changing `db.ts` (out of scope
+  for this phase). A scoped `npm run crawl -- --scope <name>` run therefore never marks any ATS
+  job inactive, even if it vanished from a company that was actually crawled this run — full,
+  unscoped runs remain the source of truth for ATS staleness.
 
 ## Seeded ATS slugs
 
