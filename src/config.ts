@@ -46,6 +46,7 @@ export const atsSeeds: AtsSeed[] = [
   // this is not a private credential. Encoded here as "<company_uid>:<token>"; see
   // src/sources/ats/comeet.ts for details.
   { platform: "comeet", slug: "61.003:16358C6EF2C61631639B558C0429" },
+  { platform: "bamboohr", slug: "soundstripe" },
 ];
 
 /** Search terms used to seed the (opt-in, off-by-default) aggregator crawl. */

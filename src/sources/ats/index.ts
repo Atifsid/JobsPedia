@@ -1,4 +1,5 @@
 import { ashby } from "./ashby.js";
+import { bamboohr } from "./bamboohr.js";
 import type { AtsScraper } from "./base.js";
 import { breezyhr } from "./breezyhr.js";
 import { comeet } from "./comeet.js";
@@ -23,4 +24,5 @@ export const atsScrapers: AtsScraper[] = [
   recruitee,
   smartrecruiters,
   comeet,
+  bamboohr,
 ];

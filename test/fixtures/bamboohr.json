@@ -1,0 +1,55 @@
+{
+  "list": {
+    "meta": { "totalCount": 2 },
+    "result": [
+      {
+        "id": "301",
+        "jobOpeningName": "Senior Backend Engineer",
+        "departmentLabel": "Engineering",
+        "location": { "city": "Austin", "state": "TX" },
+        "atsLocation": { "country": null, "state": null, "province": null, "city": null },
+        "isRemote": null,
+        "locationType": "0"
+      },
+      {
+        "id": "302",
+        "jobOpeningName": "Remote Support Engineer",
+        "departmentLabel": "Support",
+        "location": { "city": null, "state": null },
+        "atsLocation": { "country": "United States", "state": null, "province": null, "city": null },
+        "isRemote": null,
+        "locationType": "1"
+      }
+    ]
+  },
+  "details": {
+    "301": {
+      "result": {
+        "jobOpening": {
+          "jobOpeningShareUrl": "https://acme.bamboohr.com/careers/301",
+          "jobOpeningName": "Senior Backend Engineer",
+          "departmentLabel": "Engineering",
+          "description": "<p>Build great things.</p>",
+          "datePosted": "2026-01-15",
+          "location": { "city": "Austin", "state": "TX", "postalCode": null, "addressCountry": "United States" },
+          "atsLocation": { "country": null, "state": null, "province": null, "city": null },
+          "locationType": "0"
+        }
+      }
+    },
+    "302": {
+      "result": {
+        "jobOpening": {
+          "jobOpeningShareUrl": "https://acme.bamboohr.com/careers/302",
+          "jobOpeningName": "Remote Support Engineer",
+          "departmentLabel": "Support",
+          "description": "<p>Help our customers.</p>",
+          "datePosted": "2026-02-01",
+          "location": { "city": null, "state": null, "postalCode": null, "addressCountry": null },
+          "atsLocation": { "country": "United States", "state": null, "province": null, "city": null },
+          "locationType": "1"
+        }
+      }
+    }
+  }
+}
