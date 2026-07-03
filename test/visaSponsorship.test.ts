@@ -39,6 +39,20 @@ describe("fetchH1BSponsors", () => {
     expect(sponsors.has("beta")).toBe(false);
     expect(sponsors.has("gamma")).toBe(false);
   });
+
+  it("treats a comma-formatted (quoted) approval count as a number, not NaN", async () => {
+    const csvWithThousandsSeparator = [
+      '"Fiscal Year",Employer,"Initial Approval","Initial Denial","Continuing Approval","Continuing Denial",NAICS,"Tax ID",State,City,ZIP',
+      '2023,"Delta Corp","1,000",0,0,0,51,3456,CA,LOS ANGELES,90001',
+    ].join("\n");
+    const fetchMock = vi.fn(async () => ({ ok: true, text: async () => csvWithThousandsSeparator }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const sponsors = await fetchH1BSponsors();
+
+    // "Corp" is stripped as a legal suffix by normalizeCompanyName, so "Delta Corp" -> "delta".
+    expect(sponsors.has("delta")).toBe(true);
+  });
 });
 
 describe("tagVisaSponsorship", () => {

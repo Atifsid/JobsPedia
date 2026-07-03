@@ -85,6 +85,24 @@ describe("dedupeAndMerge", () => {
     expect(result[0].salaryMin).toBe(90000);
   });
 
+  it("fills in a confirmed visaSponsorship: true from the losing (aggregator) record when the primary is unknown", () => {
+    const atsJob = job({ id: "same-id", source: "ats", visaSponsorship: null });
+    const aggJob = job({ id: "same-id", source: "aggregator", visaSponsorship: true });
+
+    const result = dedupeAndMerge([atsJob, aggJob]);
+
+    expect(result[0].visaSponsorship).toBe(true);
+  });
+
+  it("keeps visaSponsorship: true on the primary record when the losing record is unknown", () => {
+    const atsJob = job({ id: "same-id", source: "ats", visaSponsorship: true });
+    const aggJob = job({ id: "same-id", source: "aggregator", visaSponsorship: null });
+
+    const result = dedupeAndMerge([atsJob, aggJob]);
+
+    expect(result[0].visaSponsorship).toBe(true);
+  });
+
   it("keeps unrelated jobs separate", () => {
     const a = job({ id: "a", company: "Acme", title: "Engineer", city: "Berlin", applyUrl: "https://x.com/1" });
     const b = job({ id: "b", company: "Beta", title: "Designer", city: "Paris", applyUrl: "https://x.com/2" });

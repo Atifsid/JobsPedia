@@ -44,13 +44,18 @@ async function fetchLatestExport(): Promise<string> {
   );
 }
 
+/** Parse a USCIS approval-count field, stripping thousands separators (e.g. "1,000") before converting to a number. */
+function parseCount(value: string): number {
+  return Number(value.replace(/,/g, ""));
+}
+
 /** Fetch and parse the latest USCIS H-1B export into a set of normalized employer names with at least one approval. */
 export async function fetchH1BSponsors(): Promise<Set<string>> {
   const csv = await fetchLatestExport();
   const rows = parse(csv, { columns: true, skip_empty_lines: true }) as UscisRow[];
   const sponsors = new Set<string>();
   for (const row of rows) {
-    const approvals = Number(row["Initial Approval"]) + Number(row["Continuing Approval"]);
+    const approvals = parseCount(row["Initial Approval"]) + parseCount(row["Continuing Approval"]);
     if (approvals > 0 && row.Employer) {
       sponsors.add(normalizeCompanyName(row.Employer));
     }

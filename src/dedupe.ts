@@ -19,6 +19,7 @@ function fillGaps(primary: NewJob, other: NewJob): NewJob {
     city: primary.city ?? other.city,
     region: primary.region ?? other.region,
     country: primary.country ?? other.country,
+    visaSponsorship: primary.visaSponsorship === true ? true : other.visaSponsorship,
     salaryMin: primary.salaryMin ?? other.salaryMin,
     salaryMax: primary.salaryMax ?? other.salaryMax,
     currency: primary.currency ?? other.currency,
