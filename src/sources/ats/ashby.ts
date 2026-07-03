@@ -61,6 +61,7 @@ function toJob(raw: AshbyPosting, slug: string): NewJob {
     country: postal?.addressCountry ?? loc.country,
     seniority: deriveSeniority(raw.title),
     isRemote: raw.isRemote || loc.isRemote,
+    visaSponsorship: null,
     salaryMin,
     salaryMax,
     currency: salaryComponent?.currencyCode ?? null,

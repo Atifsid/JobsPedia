@@ -33,6 +33,7 @@ function toJob(raw: GreenhouseJob): NewJob {
     country: loc.country,
     seniority: deriveSeniority(raw.title),
     isRemote: loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

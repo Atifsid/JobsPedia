@@ -13,6 +13,7 @@ function job(overrides: Partial<NewJob>): NewJob {
     country: null,
     seniority: "mid",
     isRemote: true,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

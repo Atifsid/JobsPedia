@@ -45,6 +45,7 @@ function toJob(raw: LeverPosting, slug: string): NewJob {
     country: loc.country ?? raw.country ?? null,
     seniority: deriveSeniority(raw.text),
     isRemote,
+    visaSponsorship: null,
     salaryMin,
     salaryMax,
     currency: raw.salaryRange?.currency ?? null,

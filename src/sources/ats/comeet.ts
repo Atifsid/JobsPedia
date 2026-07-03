@@ -53,6 +53,7 @@ function toJob(raw: ComeetPosition, companyUid: string): NewJob {
     country: raw.location?.country ?? loc.country,
     seniority: deriveSeniority(raw.name),
     isRemote: raw.location?.is_remote === true || raw.workplace_type?.toLowerCase() === "remote" || loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

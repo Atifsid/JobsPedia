@@ -52,6 +52,7 @@ function toJob(raw: PersonioPosition, slug: string): NewJob {
     country: loc.country,
     seniority: deriveSeniority(raw.name),
     isRemote: loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

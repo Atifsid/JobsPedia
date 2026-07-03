@@ -42,6 +42,7 @@ function toJob(raw: JobScoreJob): NewJob {
     country: loc.country ?? raw.country ?? null,
     seniority: deriveSeniority(raw.title),
     isRemote: remoteFlag || loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

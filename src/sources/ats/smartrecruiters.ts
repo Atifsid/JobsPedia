@@ -68,6 +68,7 @@ function toJob(raw: SmartRecruitersPosting, detail: SmartRecruitersDetail | null
     country: rawLoc?.country ? rawLoc.country.toUpperCase() : loc.country,
     seniority: deriveSeniority(raw.name),
     isRemote: rawLoc?.remote === true || loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

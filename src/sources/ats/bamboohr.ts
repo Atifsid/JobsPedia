@@ -99,6 +99,7 @@ function toJob(raw: BambooListJob, detail: BambooJobOpening | null, slug: string
     country: atsLoc?.country ?? physLoc?.addressCountry ?? loc.country,
     seniority: deriveSeniority(raw.jobOpeningName),
     isRemote: isRemoteFlag === true || locationType === "1" || loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

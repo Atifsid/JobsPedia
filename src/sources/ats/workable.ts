@@ -40,6 +40,7 @@ function toJob(raw: WorkableJob, companyName: string): NewJob {
     country: loc.country ?? raw.country ?? null,
     seniority: deriveSeniority(raw.title),
     isRemote: raw.telecommuting === true || loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

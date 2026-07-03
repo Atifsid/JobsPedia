@@ -30,6 +30,7 @@ function toJob(raw: BreezyJob, slug: string): NewJob {
     country: loc.country,
     seniority: deriveSeniority(raw.name),
     isRemote: raw.location?.is_remote === true || loc.isRemote,
+    visaSponsorship: null,
     salaryMin: null,
     salaryMax: null,
     currency: null,

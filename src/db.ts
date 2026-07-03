@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS jobs (
   country      TEXT,
   seniority    TEXT,
   is_remote    INTEGER DEFAULT 0,
+  visa_sponsorship INTEGER,
   salary_min   INTEGER,
   salary_max   INTEGER,
   currency     TEXT,
@@ -69,6 +70,13 @@ function ensureSeniorityColumn(db: Database.Database): void {
   }
 }
 
+function ensureVisaSponsorshipColumn(db: Database.Database): void {
+  const columns = db.prepare("PRAGMA table_info(jobs)").all() as { name: string }[];
+  if (!columns.some((c) => c.name === "visa_sponsorship")) {
+    db.exec("ALTER TABLE jobs ADD COLUMN visa_sponsorship INTEGER");
+  }
+}
+
 export function openDb(path: string = DEFAULT_DB_PATH): Database.Database {
   if (path !== ":memory:") {
     const dir = dirname(path);
@@ -78,6 +86,7 @@ export function openDb(path: string = DEFAULT_DB_PATH): Database.Database {
   db.pragma("journal_mode = WAL");
   db.exec(MIGRATIONS);
   ensureSeniorityColumn(db);
+  ensureVisaSponsorshipColumn(db);
   return db;
 }
 
@@ -91,6 +100,7 @@ export interface JobRow {
   country: string | null;
   seniority: string | null;
   is_remote: number;
+  visa_sponsorship: number | null;
   salary_min: number | null;
   salary_max: number | null;
   currency: string | null;
@@ -115,6 +125,7 @@ export function rowToJob(row: JobRow): Job {
     country: row.country,
     seniority: row.seniority as Job["seniority"],
     isRemote: row.is_remote === 1,
+    visaSponsorship: row.visa_sponsorship === null ? null : row.visa_sponsorship === 1,
     salaryMin: row.salary_min,
     salaryMax: row.salary_max,
     currency: row.currency,
@@ -132,11 +143,11 @@ export function rowToJob(row: JobRow): Job {
 const upsertSql = `
 INSERT INTO jobs (
   id, title, company, location, city, region, country, seniority, is_remote,
-  salary_min, salary_max, currency, apply_url, description, date_posted,
+  visa_sponsorship, salary_min, salary_max, currency, apply_url, description, date_posted,
   platform, source, first_seen, last_seen, is_active
 ) VALUES (
   @id, @title, @company, @location, @city, @region, @country, @seniority, @isRemote,
-  @salaryMin, @salaryMax, @currency, @applyUrl, @description, @datePosted,
+  @visaSponsorship, @salaryMin, @salaryMax, @currency, @applyUrl, @description, @datePosted,
   @platform, @source, @now, @now, 1
 )
 ON CONFLICT(id) DO UPDATE SET
@@ -148,6 +159,7 @@ ON CONFLICT(id) DO UPDATE SET
   country = excluded.country,
   seniority = excluded.seniority,
   is_remote = excluded.is_remote,
+  visa_sponsorship = excluded.visa_sponsorship,
   salary_min = excluded.salary_min,
   salary_max = excluded.salary_max,
   currency = excluded.currency,
@@ -169,6 +181,7 @@ export function upsertJobs(db: Database.Database, jobs: NewJob[]): void {
       stmt.run({
         ...job,
         isRemote: job.isRemote ? 1 : 0,
+        visaSponsorship: job.visaSponsorship === null ? null : job.visaSponsorship ? 1 : 0,
         now,
       });
     }

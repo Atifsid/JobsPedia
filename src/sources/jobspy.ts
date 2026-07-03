@@ -36,6 +36,7 @@ function toJob(raw: FlatJobRecord): NewJob | null {
     country: loc.country,
     seniority: deriveSeniority(raw.title),
     isRemote: Boolean(raw.is_remote) || loc.isRemote,
+    visaSponsorship: null,
     salaryMin,
     salaryMax,
     currency: raw.currency ?? null,
