@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS jobs (
   city         TEXT,
   region       TEXT,
   country      TEXT,
+  seniority    TEXT,
   is_remote    INTEGER DEFAULT 0,
   salary_min   INTEGER,
   salary_max   INTEGER,
@@ -61,6 +62,13 @@ CREATE TRIGGER IF NOT EXISTS jobs_au AFTER UPDATE ON jobs BEGIN
 END;
 `;
 
+function ensureSeniorityColumn(db: Database.Database): void {
+  const columns = db.prepare("PRAGMA table_info(jobs)").all() as { name: string }[];
+  if (!columns.some((c) => c.name === "seniority")) {
+    db.exec("ALTER TABLE jobs ADD COLUMN seniority TEXT");
+  }
+}
+
 export function openDb(path: string = DEFAULT_DB_PATH): Database.Database {
   if (path !== ":memory:") {
     const dir = dirname(path);
@@ -69,6 +77,7 @@ export function openDb(path: string = DEFAULT_DB_PATH): Database.Database {
   const db = new Database(path);
   db.pragma("journal_mode = WAL");
   db.exec(MIGRATIONS);
+  ensureSeniorityColumn(db);
   return db;
 }
 
@@ -80,6 +89,7 @@ export interface JobRow {
   city: string | null;
   region: string | null;
   country: string | null;
+  seniority: string | null;
   is_remote: number;
   salary_min: number | null;
   salary_max: number | null;
@@ -103,6 +113,7 @@ export function rowToJob(row: JobRow): Job {
     city: row.city,
     region: row.region,
     country: row.country,
+    seniority: row.seniority as Job["seniority"],
     isRemote: row.is_remote === 1,
     salaryMin: row.salary_min,
     salaryMax: row.salary_max,
@@ -120,11 +131,11 @@ export function rowToJob(row: JobRow): Job {
 
 const upsertSql = `
 INSERT INTO jobs (
-  id, title, company, location, city, region, country, is_remote,
+  id, title, company, location, city, region, country, seniority, is_remote,
   salary_min, salary_max, currency, apply_url, description, date_posted,
   platform, source, first_seen, last_seen, is_active
 ) VALUES (
-  @id, @title, @company, @location, @city, @region, @country, @isRemote,
+  @id, @title, @company, @location, @city, @region, @country, @seniority, @isRemote,
   @salaryMin, @salaryMax, @currency, @applyUrl, @description, @datePosted,
   @platform, @source, @now, @now, 1
 )
@@ -135,6 +146,7 @@ ON CONFLICT(id) DO UPDATE SET
   city = excluded.city,
   region = excluded.region,
   country = excluded.country,
+  seniority = excluded.seniority,
   is_remote = excluded.is_remote,
   salary_min = excluded.salary_min,
   salary_max = excluded.salary_max,

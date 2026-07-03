@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SENIORITY_LEVELS } from "./seniority.js";
 
 export const sourceEnum = z.enum(["ats", "aggregator"]);
 export type Source = z.infer<typeof sourceEnum>;
@@ -29,6 +30,7 @@ export const jobSchema = z.object({
   city: z.string().nullable(),
   region: z.string().nullable(),
   country: z.string().nullable(),
+  seniority: z.enum(SENIORITY_LEVELS).nullable(),
   isRemote: z.boolean().default(false),
   salaryMin: z.number().int().positive().nullable(),
   salaryMax: z.number().int().positive().nullable(),
