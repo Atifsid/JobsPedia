@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "id": "111111",
+      "title": "Senior Backend Engineer",
+      "url": "https://remotejobs.org/remote-jobs/senior-backend-engineer-acme-corp",
+      "apply_url": "https://remotejobs.org/remote-jobs/senior-backend-engineer-acme-corp",
+      "company": {
+        "name": "Acme Corp",
+        "logo_url": "",
+        "website": "https://acme.example",
+        "url": "https://remotejobs.org/companies/acme-corp"
+      },
+      "category": { "name": "Programming", "slug": "programming" },
+      "location": "Remote",
+      "salary_min": 120000,
+      "salary_max": 160000,
+      "salary_text": "USD 120,000 - 160,000",
+      "type": "Full-time",
+      "description": "<p>Build great things.</p>",
+      "posted_at": "2026-01-15T10:00:00+00:00",
+      "is_translated": false,
+      "original_language": null
+    },
+    {
+      "id": "222222",
+      "title": "Support Engineer",
+      "url": "https://remotejobs.org/remote-jobs/support-engineer-acme-corp",
+      "apply_url": null,
+      "company": {
+        "name": "Acme Corp",
+        "logo_url": "",
+        "website": "https://acme.example",
+        "url": "https://remotejobs.org/companies/acme-corp"
+      },
+      "category": { "name": "Programming", "slug": "programming" },
+      "location": "Remote",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_text": null,
+      "type": "Full-time",
+      "description": "<p>Help our customers.</p>",
+      "posted_at": "2026-02-01T10:00:00+00:00",
+      "is_translated": false,
+      "original_language": null
+    }
+  ],
+  "pagination": { "total": 2, "limit": 50, "offset": 0, "has_more": false },
+  "meta": {
+    "powered_by": "RemoteJobs.org",
+    "url": "https://remotejobs.org",
+    "docs": "https://remotejobs.org/api/v1/docs"
+  }
+}
