@@ -28,8 +28,13 @@ describe("fetchJson", () => {
     const fetchMock = vi.fn(async () => ({ ok: false, status: 404, json: async () => ({}) }));
     vi.stubGlobal("fetch", fetchMock);
     const promise = fetchJson("https://example.com/missing");
+    // Attach the rejection assertion before flushing timers, not after — otherwise
+    // the promise can reject during runAllTimersAsync() before anything is listening,
+    // and Node logs a spurious "unhandled rejection" warning even though the test
+    // does eventually await and assert on it.
+    const assertion = expect(promise).rejects.toThrow(/404/);
     await vi.runAllTimersAsync();
-    await expect(promise).rejects.toThrow(/404/);
+    await assertion;
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
@@ -53,8 +58,10 @@ describe("fetchJson", () => {
     const fetchMock = vi.fn(async () => ({ ok: false, status: 503, json: async () => ({}) }));
     vi.stubGlobal("fetch", fetchMock);
     const promise = fetchJson("https://example.com/down");
+    // See the 404 test above for why the assertion is attached before the timer flush.
+    const assertion = expect(promise).rejects.toThrow(/503/);
     await vi.runAllTimersAsync();
-    await expect(promise).rejects.toThrow(/503/);
+    await assertion;
     expect(fetchMock).toHaveBeenCalledTimes(3);
   });
 });
