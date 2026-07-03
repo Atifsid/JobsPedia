@@ -1,0 +1,4 @@
+"Fiscal Year",Employer,"Initial Approval","Initial Denial","Continuing Approval","Continuing Denial",NAICS,"Tax ID",State,City,ZIP
+2023,"Acme Corp, Inc.",5,0,3,0,51,1234,CA,SAN FRANCISCO,94103
+2023,"Beta LLC",0,2,0,1,54,5678,NY,NEW YORK,10001
+2023,"Gamma Co.",0,0,0,0,52,9012,TX,AUSTIN,73301
