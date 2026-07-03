@@ -203,8 +203,13 @@ async function main(): Promise<void> {
         "ats",
       );
     } else if (scope && (mode === "ats" || mode === "all")) {
+      // markStale's `platforms` filter only narrows by platform. `--scope` filters at a finer
+      // granularity (industry/tag -> individual seed slugs, see scope.ts's matchesScope), so
+      // passing scoped platforms to markStale here would still incorrectly deactivate other
+      // companies on the same platform that fall outside this scope (e.g. scope "fintech" might
+      // select the `stripe` seed but not `airbnb`, even though both are on `greenhouse`).
       console.log(
-        `[crawl] scope "${scope}" active — skipping ATS staleness check (a scoped run would otherwise incorrectly deactivate jobs from companies outside this scope)`,
+        `[crawl] scope "${scope}" active — skipping ATS staleness check (markStale can only scope by platform, which is coarser than --scope's industry/tag granularity)`,
       );
     }
 

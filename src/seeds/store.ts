@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
 import { platformEnum, type Platform } from "../schema.js";
@@ -30,8 +30,16 @@ export function listSeedPlatforms(dir: string = DEFAULT_SEEDS_DIR): Platform[] {
     .map((f) => platformEnum.parse(f.replace(/\.json$/, "")));
 }
 
+/**
+ * Reads and validates a platform's seed file. A platform with no seed file yet (e.g. a newly
+ * added `ATS_DOMAIN_PATTERNS` entry in detectAts.ts with no committed `<platform>.json`) is
+ * treated as having zero seeds, not an error — this keeps discover-seeds fail-soft. A file that
+ * DOES exist but fails schema validation still throws; that's a real data-integrity problem.
+ */
 export function readSeedFile(platform: Platform, dir: string = DEFAULT_SEEDS_DIR): AtsSeedEntry[] {
-  const raw: unknown = JSON.parse(readFileSync(seedFilePath(platform, dir), "utf-8"));
+  const path = seedFilePath(platform, dir);
+  if (!existsSync(path)) return [];
+  const raw: unknown = JSON.parse(readFileSync(path, "utf-8"));
   return z.array(atsSeedEntrySchema).parse(raw);
 }
 

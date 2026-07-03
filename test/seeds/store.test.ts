@@ -50,6 +50,10 @@ describe("seeds/store", () => {
     expect(() => readSeedFile("lever", dir)).toThrow();
   });
 
+  it("returns an empty list when the platform's seed file doesn't exist yet", () => {
+    expect(readSeedFile("ashby", dir)).toEqual([]);
+  });
+
   it("loadAllSeeds flattens every platform's entries with the platform field attached", () => {
     writeSeedFile(
       "greenhouse",

@@ -116,11 +116,15 @@ choices made:
   spot-checked against a live company yet. `comeet` is excluded from auto-discovery entirely —
   its `fetch()` needs a per-company token embedded in the careers page's JS state, not a slug
   regex can't derive from the URL alone.
-- **`--scope` skips the ATS staleness check.** `markStale()` (`src/db.ts`) has no way to scope
-  itself to "only the seeds this run intended to crawl" without changing `db.ts` (out of scope
-  for this phase). A scoped `npm run crawl -- --scope <name>` run therefore never marks any ATS
-  job inactive, even if it vanished from a company that was actually crawled this run — full,
-  unscoped runs remain the source of truth for ATS staleness.
+- **`--scope` skips the ATS staleness check.** `markStale()` (`src/db.ts`) accepts an optional
+  `platforms` filter, but that's coarser than what `--scope` needs: scope filters at
+  industry/tag granularity down to individual seed slugs (see `src/scope.ts`'s `matchesScope`),
+  while `markStale`'s filter only narrows by platform. E.g. scope `"fintech"` might select the
+  `stripe` seed but not `airbnb`, even though both are on `greenhouse` — passing scoped
+  platforms to `markStale` would still incorrectly deactivate `airbnb`'s live jobs. A scoped
+  `npm run crawl -- --scope <name>` run therefore never marks any ATS job inactive, even if it
+  vanished from a company that was actually crawled this run — full, unscoped runs remain the
+  source of truth for ATS staleness.
 
 ## Seeded ATS slugs
 
