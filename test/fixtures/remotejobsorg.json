@@ -45,7 +45,7 @@
       "original_language": null
     }
   ],
-  "pagination": { "total": 2, "limit": 50, "offset": 0, "has_more": false },
+  "pagination": { "total": 3, "limit": 50, "offset": 0, "has_more": true },
   "meta": {
     "powered_by": "RemoteJobs.org",
     "url": "https://remotejobs.org",
