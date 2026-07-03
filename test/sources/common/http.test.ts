@@ -64,6 +64,20 @@ describe("fetchJson", () => {
     await assertion;
     expect(fetchMock).toHaveBeenCalledTimes(3);
   });
+
+  it("passes init through to fetch (method, headers, body)", async () => {
+    const fetchMock = vi.fn(async () => ({ ok: true, json: async () => ({ ok: true }) }));
+    vi.stubGlobal("fetch", fetchMock);
+    await fetchJson("https://example.com/query", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ q: "x" }),
+    });
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://example.com/query",
+      expect.objectContaining({ method: "POST", body: JSON.stringify({ q: "x" }) }),
+    );
+  });
 });
 
 describe("fetchText", () => {
