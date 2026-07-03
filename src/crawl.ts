@@ -1,7 +1,7 @@
 import { aggregatorConfig, aggregatorSearchTerms, atsSeeds } from "./config.js";
 import { dedupeAndMerge } from "./dedupe.js";
 import { markStale, openDb, upsertJobs } from "./db.js";
-import { newJobSchema, type NewJob, type Source } from "./schema.js";
+import { newJobSchema, type NewJob } from "./schema.js";
 import { atsScrapers } from "./sources/ats/index.js";
 import { fetchAggregatorJobs } from "./sources/jobspy.js";
 
