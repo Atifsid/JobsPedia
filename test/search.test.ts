@@ -13,6 +13,7 @@ function job(overrides: Partial<NewJob>): NewJob {
     city: "Berlin",
     region: null,
     country: "DE",
+    seniority: "mid",
     isRemote: false,
     salaryMin: null,
     salaryMax: null,
@@ -32,15 +33,17 @@ describe("searchJobs", () => {
   beforeEach(() => {
     db = openDb(":memory:");
     upsertJobs(db, [
-      job({ id: "1", title: "Senior Software Engineer", city: "Berlin", country: "DE", isRemote: false }),
+      job({ id: "1", title: "Senior Software Engineer", city: "Berlin", country: "DE", seniority: "senior", isRemote: false, salaryMin: 80000, salaryMax: 110000, datePosted: "2026-06-25" }),
       job({
         id: "2",
         title: "Product Manager",
         city: "Paris",
         country: "FR",
+        seniority: "mid",
         isRemote: true,
-        description: "Own the roadmap.",
+        description: "Own the roadmap. Work closely with developers to ship features.",
         applyUrl: "https://boards.greenhouse.io/acme/jobs/2",
+        datePosted: "2026-06-20",
       }),
       job({
         id: "3",
@@ -48,26 +51,48 @@ describe("searchJobs", () => {
         company: "Beta",
         city: "Berlin",
         country: "DE",
+        seniority: "staff",
         isRemote: true,
         source: "aggregator",
         platform: "linkedin",
         applyUrl: "https://linkedin.com/jobs/3",
+        salaryMin: 140000,
+        salaryMax: 180000,
+        datePosted: "2026-01-01",
       }),
     ]);
   });
 
   afterEach(() => db.close());
 
-  it("returns the documented response shape", () => {
+  it("returns the documented response shape including total", () => {
     const res = searchJobs(db, { page: 1, limit: 20 });
     expect(res).toMatchObject({ page: 1 });
     expect(res.count).toBe(res.jobs.length);
+    expect(res.total).toBe(3);
     expect(res.jobs.length).toBeGreaterThan(0);
   });
 
-  it("full-text matches on title", () => {
-    const res = searchJobs(db, { title: "engineer", page: 1, limit: 20 });
+  it("title search matches only the title column, not description mentions", () => {
+    // job 2 (Product Manager) mentions "developers" only in its description —
+    // a title search for "Software Developer" must not match it.
+    const res = searchJobs(db, { title: "Software Developer", page: 1, limit: 20 });
+    expect(res.jobs.map((j) => j.id).sort()).toEqual([]);
+  });
+
+  it("title search matches jobs whose title actually contains the words", () => {
+    const res = searchJobs(db, { title: "Software Engineer", page: 1, limit: 20 });
     expect(res.jobs.map((j) => j.id).sort()).toEqual(["1", "3"]);
+  });
+
+  it("keywords search still matches across title, company, and description", () => {
+    const res = searchJobs(db, { keywords: ["python", "aws"], page: 1, limit: 20 });
+    expect(res.jobs.map((j) => j.id).sort()).toEqual(["1", "3"]);
+  });
+
+  it("keywords search can surface the description-only developer mention", () => {
+    const res = searchJobs(db, { keywords: ["developers"], page: 1, limit: 20 });
+    expect(res.jobs.map((j) => j.id)).toEqual(["2"]);
   });
 
   it("filters by city and source together", () => {
@@ -80,14 +105,47 @@ describe("searchJobs", () => {
     expect(res.jobs.map((j) => j.id).sort()).toEqual(["2", "3"]);
   });
 
-  it("matches keywords against the description", () => {
-    const res = searchJobs(db, { keywords: ["python", "aws"], page: 1, limit: 20 });
+  it("filters by seniority (exact match, multiple values)", () => {
+    const res = searchJobs(db, { seniority: ["senior", "staff"], page: 1, limit: 20 });
     expect(res.jobs.map((j) => j.id).sort()).toEqual(["1", "3"]);
+  });
+
+  it("filters by company substring", () => {
+    const res = searchJobs(db, { company: "beta", page: 1, limit: 20 });
+    expect(res.jobs.map((j) => j.id)).toEqual(["3"]);
+  });
+
+  it("filters by minSalary, never excluding undisclosed salary", () => {
+    const res = searchJobs(db, { minSalary: 150000, page: 1, limit: 20 });
+    // job 3 (140k-180k) satisfies (max >= 150000); job 2 has no salary and
+    // is never excluded; job 1 (80k-110k) fails the floor.
+    expect(res.jobs.map((j) => j.id).sort()).toEqual(["2", "3"]);
+  });
+
+  it("filters by maxSalary, never excluding undisclosed salary", () => {
+    const res = searchJobs(db, { maxSalary: 120000, page: 1, limit: 20 });
+    // job 1 (80k-110k) satisfies (min <= 120000); job 2 has no salary and
+    // is never excluded; job 3 (140k-180k) fails the ceiling.
+    expect(res.jobs.map((j) => j.id).sort()).toEqual(["1", "2"]);
+  });
+
+  it("filters by daysAgo freshness", () => {
+    const res = searchJobs(db, { daysAgo: 10, page: 1, limit: 20 });
+    // "now" in this test run is long after 2026-06-25/06-20, so use a
+    // reference far enough in the future relative to job 3's 2026-01-01
+    // datePosted to exclude it deterministically regardless of today's date.
+    expect(res.jobs.map((j) => j.id)).not.toContain("3");
   });
 
   it("excludes inactive jobs", () => {
     db.prepare("UPDATE jobs SET is_active = 0 WHERE id = ?").run("1");
-    const res = searchJobs(db, { title: "engineer", page: 1, limit: 20 });
+    const res = searchJobs(db, { title: "Software Engineer", page: 1, limit: 20 });
     expect(res.jobs.map((j) => j.id)).toEqual(["3"]);
+  });
+
+  it("total reflects all matching rows, not just the current page", () => {
+    const res = searchJobs(db, { seniority: ["senior", "staff", "mid"], page: 1, limit: 1 });
+    expect(res.jobs.length).toBe(1);
+    expect(res.total).toBe(3);
   });
 });
