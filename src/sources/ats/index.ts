@@ -1,9 +1,10 @@
 import { ashby } from "./ashby.js";
 import type { AtsScraper } from "./base.js";
+import { breezyhr } from "./breezyhr.js";
 import { greenhouse } from "./greenhouse.js";
 import { lever } from "./lever.js";
 import { workable } from "./workable.js";
 
 export type { AtsScraper } from "./base.js";
 
-export const atsScrapers: AtsScraper[] = [greenhouse, lever, ashby, workable];
+export const atsScrapers: AtsScraper[] = [greenhouse, lever, ashby, workable, breezyhr];

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "b8e6b722f7ed",
+    "friendly_id": "b8e6b722f7ed-backend-engineer",
+    "name": "Backend Engineer",
+    "url": "https://acme.breezy.hr/p/b8e6b722f7ed-backend-engineer",
+    "published_date": "2026-01-15T10:00:00.000Z",
+    "type": { "id": "fullTime", "name": "Full-Time" },
+    "location": {
+      "country": { "name": "United States", "id": "US" },
+      "city": "Austin, TX, US",
+      "primary": true,
+      "is_remote": false,
+      "name": "Austin, TX, US",
+      "id": "loc1"
+    },
+    "department": "Engineering",
+    "salary": "",
+    "company": { "name": "Acme Corp", "logo_url": null, "friendly_id": "acme", "isMultipleLocationsEnabled": false },
+    "locations": [],
+    "description": "<p>Build great things.</p>"
+  },
+  {
+    "id": "c9f7c833g8fe",
+    "friendly_id": "c9f7c833g8fe-remote-support-engineer",
+    "name": "Remote Support Engineer",
+    "url": "https://acme.breezy.hr/p/c9f7c833g8fe-remote-support-engineer",
+    "published_date": "2026-02-01T10:00:00.000Z",
+    "type": { "id": "fullTime", "name": "Full-Time" },
+    "location": {
+      "country": { "name": "United States", "id": "US" },
+      "city": "Remote",
+      "primary": true,
+      "is_remote": true,
+      "name": "Remote - US",
+      "id": "loc2"
+    },
+    "department": "Support",
+    "salary": "",
+    "company": { "name": "Acme Corp", "logo_url": null, "friendly_id": "acme", "isMultipleLocationsEnabled": false },
+    "locations": [],
+    "description": "<p>Help our customers.</p>"
+  }
+]
