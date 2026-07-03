@@ -1,7 +1,8 @@
-import { aggregatorConfig, aggregatorSearchTerms, atsSeeds } from "./config.js";
+import { aggregatorConfig, aggregatorSearchTerms, atsSeeds, type AtsSeed } from "./config.js";
 import { dedupeAndMerge } from "./dedupe.js";
 import { markStale, openDb, upsertJobs } from "./db.js";
 import { newJobSchema, type NewJob, type Platform } from "./schema.js";
+import { filterByScope, parseScope } from "./scope.js";
 import { apiProviders } from "./sources/apis/index.js";
 import { atsScrapers } from "./sources/ats/index.js";
 import { fetchAggregatorJobs } from "./sources/jobspy.js";
@@ -57,10 +58,10 @@ function validate(raw: NewJob[], label: string): NewJob[] {
   return valid;
 }
 
-async function crawlAts(): Promise<{ jobs: NewJob[]; results: SourceResult[] }> {
+async function crawlAts(seeds: AtsSeed[]): Promise<{ jobs: NewJob[]; results: SourceResult[] }> {
   const jobs: NewJob[] = [];
   const results: SourceResult[] = [];
-  for (const seed of atsSeeds) {
+  for (const seed of seeds) {
     console.log(`[crawl] ATS ${seed.platform}:${seed.slug}`);
     const scraper = atsScrapers.find((s) => s.platform === seed.platform);
     const label = `${seed.platform}:${seed.slug}`;
@@ -150,14 +151,20 @@ function parseMode(argv: string[]): CrawlMode {
 }
 
 async function main(): Promise<void> {
-  const mode = parseMode(process.argv.slice(2));
+  const argv = process.argv.slice(2);
+  const mode = parseMode(argv);
+  const scope = parseScope(argv);
+  const seeds = filterByScope(atsSeeds, scope);
+  if (scope) {
+    console.log(`[crawl] scope "${scope}": ${seeds.length}/${atsSeeds.length} seeds match`);
+  }
   console.log(`[crawl] starting (source: ${mode})`);
 
   let rawJobs: NewJob[] = [];
   let results: SourceResult[] = [];
 
   if (mode === "ats") {
-    const [ats, apis] = await Promise.all([crawlAts(), crawlApis()]);
+    const [ats, apis] = await Promise.all([crawlAts(seeds), crawlApis()]);
     rawJobs = [...ats.jobs, ...apis.jobs];
     results = [...ats.results, ...apis.results];
   } else if (mode === "apis") {
@@ -167,7 +174,7 @@ async function main(): Promise<void> {
   } else {
     const [aggregators, ats, apis] = await Promise.all([
       crawlAggregators(),
-      crawlAts(),
+      crawlAts(seeds),
       crawlApis(),
     ]);
 
@@ -189,11 +196,15 @@ async function main(): Promise<void> {
   const db = openDb();
   try {
     upsertJobs(db, merged);
-    if (mode === "ats" || mode === "all") {
+    if ((mode === "ats" || mode === "all") && !scope) {
       markStale(
         db,
         rawJobs.filter((j) => j.source === "ats").map((j) => j.id),
         "ats",
+      );
+    } else if (scope && (mode === "ats" || mode === "all")) {
+      console.log(
+        `[crawl] scope "${scope}" active — skipping ATS staleness check (a scoped run would otherwise incorrectly deactivate jobs from companies outside this scope)`,
       );
     }
 
