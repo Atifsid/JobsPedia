@@ -1,0 +1,40 @@
+{
+  "offers": [
+    {
+      "id": 111,
+      "title": "Senior Backend Engineer",
+      "company_name": "Acme Corp",
+      "careers_url": "https://acme.recruitee.com/o/senior-backend-engineer",
+      "department": "Engineering",
+      "employment_type_code": "fulltime",
+      "remote": false,
+      "city": "Amsterdam",
+      "state_code": null,
+      "country_code": "NL",
+      "location": "Amsterdam, Noord-Holland, Netherlands",
+      "description": "<p>Build great things.</p>",
+      "requirements": "<p>5+ years experience.</p>",
+      "salary": { "min": "60000", "max": "80000", "currency": "EUR", "period": "year" },
+      "published_at": "2026-01-12T09:00:00.000Z",
+      "created_at": "2026-01-10T09:00:00.000Z"
+    },
+    {
+      "id": 222,
+      "title": "Remote Customer Support Rep",
+      "company_name": "Acme Corp",
+      "careers_url": "https://acme.recruitee.com/o/remote-customer-support-rep",
+      "department": "Support",
+      "employment_type_code": "fulltime",
+      "remote": true,
+      "city": null,
+      "state_code": null,
+      "country_code": "NL",
+      "location": "Netherlands",
+      "description": "<p>Help our customers.</p>",
+      "requirements": null,
+      "salary": null,
+      "published_at": "2026-02-03T09:00:00.000Z",
+      "created_at": "2026-02-01T09:00:00.000Z"
+    }
+  ]
+}
