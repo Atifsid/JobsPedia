@@ -121,6 +121,20 @@ describe("searchJobs", () => {
     expect(res.jobs.map((j) => j.id).sort()).toEqual(["2", "3"]);
   });
 
+  it("filters by visaSponsorship, excluding null/unknown when a value is requested", () => {
+    upsertJobs(db, [
+      job({ id: "visa-1", title: "Engineer A", company: "Acme", visaSponsorship: true }),
+      job({ id: "visa-2", title: "Engineer B", company: "Beta", visaSponsorship: false }),
+      job({ id: "visa-3", title: "Engineer C", company: "Gamma", visaSponsorship: null }),
+    ]);
+
+    const sponsorsOnly = searchJobs(db, { visaSponsorship: true, page: 1, limit: 20 });
+    expect(sponsorsOnly.jobs.map((j) => j.id)).toEqual(["visa-1"]);
+
+    const nonSponsorsOnly = searchJobs(db, { visaSponsorship: false, page: 1, limit: 20 });
+    expect(nonSponsorsOnly.jobs.map((j) => j.id)).toEqual(["visa-2"]);
+  });
+
   it("filters by seniority (exact match, multiple values)", () => {
     const res = searchJobs(db, { seniority: ["senior", "staff"], page: 1, limit: 20 });
     expect(res.jobs.map((j) => j.id).sort()).toEqual(["1", "3"]);

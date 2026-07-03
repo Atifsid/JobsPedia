@@ -9,6 +9,7 @@ export const searchRequestSchema = z.object({
   keywords: z.array(z.string().trim().min(1)).optional(),
   company: z.string().trim().min(1).optional(),
   remote: z.boolean().optional(),
+  visaSponsorship: z.boolean().optional(),
   city: z.string().trim().min(1).optional(),
   region: z.string().trim().min(1).optional(),
   country: z.string().trim().min(1).optional(),
@@ -72,6 +73,13 @@ export function searchJobs(db: Database.Database, params: SearchRequest): Search
   if (params.remote !== undefined) {
     conditions.push("jobs.is_remote = ?");
     conditionBinds.push(params.remote ? 1 : 0);
+  }
+  if (params.visaSponsorship !== undefined) {
+    // Unlike minSalary/maxSalary, this excludes NULL (unknown) rows on purpose — a
+    // request for confirmed sponsors shouldn't include jobs where sponsorship is
+    // merely unverified, and "= 0"/"= 1" already excludes NULL in SQL.
+    conditions.push("jobs.visa_sponsorship = ?");
+    conditionBinds.push(params.visaSponsorship ? 1 : 0);
   }
   if (params.city) {
     conditions.push("LOWER(jobs.city) = LOWER(?)");
