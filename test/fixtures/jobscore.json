@@ -1,0 +1,41 @@
+{
+  "publisher": "JobScore",
+  "company_name": "Acme Corp",
+  "company_code": "acme",
+  "jobs": [
+    {
+      "id": "job1id",
+      "title": "Senior Backend Engineer",
+      "company_name": "Acme Corp",
+      "apply_url": "https://careers.jobscore.com/apply_flow/applications/go?job_id=job1id",
+      "detail_url": "https://careers.jobscore.com/careers/acme/jobs/senior-backend-engineer-job1id",
+      "department": "Engineering",
+      "location": "Austin, TX, US",
+      "city": "Austin",
+      "state": "TX",
+      "country": "US",
+      "experience_level": "Experienced (Non-Manager)",
+      "last_updated_date": "2026-01-20T12:00:00.000Z",
+      "opened_date": "2026-01-15T09:00:00.000Z",
+      "description": "<p>Build great things.</p>",
+      "remote": "No"
+    },
+    {
+      "id": "job2id",
+      "title": "Support Engineer",
+      "company_name": "Acme Corp",
+      "apply_url": "https://careers.jobscore.com/apply_flow/applications/go?job_id=job2id",
+      "detail_url": "https://careers.jobscore.com/careers/acme/jobs/support-engineer-job2id",
+      "department": "Support",
+      "location": "Remote in United States",
+      "city": null,
+      "state": null,
+      "country": "US",
+      "experience_level": "Entry Level",
+      "last_updated_date": "2026-02-05T12:00:00.000Z",
+      "opened_date": "2026-02-01T09:00:00.000Z",
+      "description": "<p>Help our customers.</p>",
+      "remote": "Yes | Can telecommute / work remotely 100% of the time"
+    }
+  ]
+}
