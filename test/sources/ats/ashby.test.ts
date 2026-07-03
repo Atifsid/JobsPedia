@@ -22,6 +22,7 @@ describe("ashby scraper", () => {
       city: "New York City",
       region: "NY",
       country: "USA",
+      seniority: "staff",
       isRemote: false,
       salaryMin: 200000,
       salaryMax: 260000,
@@ -33,6 +34,7 @@ describe("ashby scraper", () => {
 
     expect(jobs[1]).toMatchObject({
       title: "Recruiting Coordinator",
+      seniority: "mid",
       isRemote: true,
       salaryMin: null,
       salaryMax: null,

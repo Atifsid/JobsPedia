@@ -1,5 +1,6 @@
 import type { NewJob } from "../../schema.js";
 import { jobId } from "../../lib/id.js";
+import { deriveSeniority } from "../../seniority.js";
 import { fetchJson, parseLocation, stripHtml, type AtsScraper } from "./base.js";
 
 interface GreenhouseJob {
@@ -27,6 +28,7 @@ function toJob(raw: GreenhouseJob): NewJob {
     city: loc.city,
     region: loc.region,
     country: loc.country,
+    seniority: deriveSeniority(raw.title),
     isRemote: loc.isRemote,
     salaryMin: null,
     salaryMax: null,

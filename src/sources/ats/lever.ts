@@ -1,5 +1,6 @@
 import type { NewJob } from "../../schema.js";
 import { jobId } from "../../lib/id.js";
+import { deriveSeniority } from "../../seniority.js";
 import {
   fetchJson,
   humanizeSlug,
@@ -44,6 +45,7 @@ function toJob(raw: LeverPosting, slug: string): NewJob {
     city: loc.city,
     region: loc.region,
     country: loc.country ?? raw.country ?? null,
+    seniority: deriveSeniority(raw.text),
     isRemote,
     salaryMin,
     salaryMax,

@@ -27,6 +27,7 @@ describe("greenhouse scraper", () => {
       city: "San Francisco",
       region: "CA",
       country: "US",
+      seniority: "mid",
       isRemote: false,
       platform: "greenhouse",
       source: "ats",

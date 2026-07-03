@@ -1,5 +1,6 @@
 import { scrapeJobs, type ScrapeJobsParams } from "jobspy-js";
 import { jobId } from "../lib/id.js";
+import { deriveSeniority } from "../seniority.js";
 import type { NewJob, Platform } from "../schema.js";
 import { parseLocation, sanitizeSalary, stripHtml } from "./ats/base.js";
 
@@ -31,6 +32,7 @@ function toJob(raw: FlatJobRecord): NewJob | null {
     city: loc.city,
     region: loc.region,
     country: loc.country,
+    seniority: deriveSeniority(raw.title),
     isRemote: Boolean(raw.is_remote) || loc.isRemote,
     salaryMin,
     salaryMax,
