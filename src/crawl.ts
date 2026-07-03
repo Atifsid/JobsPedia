@@ -12,6 +12,36 @@ interface SourceResult {
   error?: string;
 }
 
+const AGGREGATOR_DELAY_MIN = 5000;
+const AGGREGATOR_DELAY_MAX = 10000;
+const MAX_RETRIES = 3;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function randomDelay(): number {
+  return Math.floor(Math.random() * (AGGREGATOR_DELAY_MAX - AGGREGATOR_DELAY_MIN + 1)) + AGGREGATOR_DELAY_MIN;
+}
+
+async function retry<T>(fn: () => Promise<T>): Promise<T> {
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastError = err;
+
+      if (attempt < MAX_RETRIES) {
+        await sleep(attempt * 10000);
+      }
+    }
+  }
+
+  throw lastError;
+}
+
 function validate(raw: NewJob[], label: string): NewJob[] {
   const valid: NewJob[] = [];
   for (const job of raw) {
@@ -54,12 +84,14 @@ async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResu
   for (const term of aggregatorSearchTerms) {
     const label = `aggregator:${term}`;
     try {
-      const raw = await fetchAggregatorJobs({
-        site_name: [...aggregatorConfig.site_name],
-        search_term: term,
-        location: aggregatorConfig.location,
-        results_wanted: aggregatorConfig.resultsWanted,
-      });
+      const raw = await retry(() =>
+        fetchAggregatorJobs({
+          site_name: [...aggregatorConfig.site_name],
+          search_term: term,
+          location: aggregatorConfig.location,
+          results_wanted: aggregatorConfig.resultsWanted,
+        }),
+      );
       const valid = validate(raw, label);
       jobs.push(...valid);
       results.push({ label, ok: true, count: valid.length });
@@ -68,6 +100,7 @@ async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResu
       results.push({ label, ok: false, count: 0, error });
       console.error(`[crawl] ${label} failed: ${error}`);
     }
+    await sleep(randomDelay());
   }
   return { jobs, results };
 }
