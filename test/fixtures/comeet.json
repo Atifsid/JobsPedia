@@ -1,0 +1,29 @@
+[
+  {
+    "uid": "pos-1",
+    "name": "Senior Backend Engineer",
+    "department": "Engineering",
+    "url_comeet_hosted_page": "https://www.comeet.com/jobs/acme/12.345/senior-backend-engineer/AB1",
+    "time_updated": "2026-06-20T17:58:23Z",
+    "company_name": "Acme Corp",
+    "workplace_type": "On-site",
+    "location": { "name": "Austin, TX, US", "country": "US", "city": "Austin", "state": "TX", "is_remote": false },
+    "details": [
+      { "name": "Overview", "value": "<p>Build great things.</p>", "order": 1 },
+      { "name": "Requirements", "value": "<p>5+ years experience.</p>", "order": 2 }
+    ]
+  },
+  {
+    "uid": "pos-2",
+    "name": "Remote Support Engineer",
+    "department": "Support",
+    "url_comeet_hosted_page": "https://www.comeet.com/jobs/acme/12.345/remote-support-engineer/CD2",
+    "time_updated": "2026-06-22T09:00:00Z",
+    "company_name": "Acme Corp",
+    "workplace_type": "Remote",
+    "location": { "name": "Remote - US", "country": "US", "city": null, "state": null, "is_remote": true },
+    "details": [
+      { "name": "Overview", "value": "<p>Help our customers.</p>", "order": 1 }
+    ]
+  }
+]

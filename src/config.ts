@@ -40,6 +40,12 @@ export const atsSeeds: AtsSeed[] = [
   { platform: "personio", slug: "personio" },
   { platform: "recruitee", slug: "jobs" },
   { platform: "smartrecruiters", slug: "visa" },
+  // Comeet's list-positions endpoint requires a per-company token in addition to the
+  // company_uid (its 400 response otherwise reads "Token is missing") — both values
+  // are embedded in the public HTML of the company's Comeet-hosted careers page, so
+  // this is not a private credential. Encoded here as "<company_uid>:<token>"; see
+  // src/sources/ats/comeet.ts for details.
+  { platform: "comeet", slug: "61.003:16358C6EF2C61631639B558C0429" },
 ];
 
 /** Search terms used to seed the (opt-in, off-by-default) aggregator crawl. */
