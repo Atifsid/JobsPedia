@@ -109,27 +109,55 @@ async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResu
  * `--only aggregators` is the only way to run the jobspy-js side — it stays off by
  * default (and under `--only ats`) since it's the slower, rate-limit-prone half.
  */
-function parseMode(argv: string[]): Source {
+type CrawlMode = "ats" | "aggregator" | "all";
+
+function parseMode(argv: string[]): CrawlMode {
   const idx = argv.indexOf("--only");
   const value = idx !== -1 ? argv[idx + 1] : undefined;
-  return value === "aggregators" ? "aggregator" : "ats";
+
+  if (value === "aggregators") return "aggregator";
+  if (value === "all") return "all";
+  return "ats";
 }
 
 async function main(): Promise<void> {
   const mode = parseMode(process.argv.slice(2));
   console.log(`[crawl] starting (source: ${mode})`);
 
-  const { jobs: rawJobs, results } = mode === "aggregator" ? await crawlAggregators() : await crawlAts();
+  let rawJobs: NewJob[] = [];
+  let results: SourceResult[] = [];
+
+  if (mode === "ats") {
+    ({ jobs: rawJobs, results } = await crawlAts());
+  } else if (mode === "aggregator") {
+    ({ jobs: rawJobs, results } = await crawlAggregators());
+  } else {
+    const ats = await crawlAts();
+    const aggregators = await crawlAggregators();
+
+    rawJobs = [...ats.jobs, ...aggregators.jobs];
+    results = [...ats.results, ...aggregators.results];
+  }
   const merged = dedupeAndMerge(rawJobs);
 
   const db = openDb();
   try {
     upsertJobs(db, merged);
-    markStale(
-      db,
-      merged.map((j) => j.id),
-      mode,
-    );
+    if (mode === "ats" || mode === "all") {
+      markStale(
+        db,
+        rawJobs.filter((j) => j.source === "ats").map((j) => j.id),
+        "ats",
+      );
+    }
+
+    if (mode === "aggregator" || mode === "all") {
+      markStale(
+        db,
+        rawJobs.filter((j) => j.source === "aggregator").map((j) => j.id),
+        "aggregator",
+      );
+    }
   } finally {
     db.close();
   }
