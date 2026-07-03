@@ -39,6 +39,7 @@ export const atsSeeds: AtsSeed[] = [
   { platform: "jobscore", slug: "jobscore" },
   { platform: "personio", slug: "personio" },
   { platform: "recruitee", slug: "jobs" },
+  { platform: "smartrecruiters", slug: "visa" },
 ];
 
 /** Search terms used to seed the (opt-in, off-by-default) aggregator crawl. */

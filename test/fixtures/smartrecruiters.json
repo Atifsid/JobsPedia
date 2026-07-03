@@ -1,0 +1,42 @@
+{
+  "postings": {
+    "offset": 0,
+    "limit": 100,
+    "totalFound": 2,
+    "content": [
+      {
+        "id": "posting-1",
+        "name": "Senior Backend Engineer",
+        "company": { "identifier": "acme", "name": "Acme Corp" },
+        "releasedDate": "2026-01-15T00:00:00.000Z",
+        "location": { "city": "Austin", "region": "TX", "country": "us", "remote": false, "hybrid": false, "fullLocation": "Austin, TX, US" }
+      },
+      {
+        "id": "posting-2",
+        "name": "Remote Support Engineer",
+        "company": { "identifier": "acme", "name": "Acme Corp" },
+        "releasedDate": "2026-02-01T00:00:00.000Z",
+        "location": { "city": null, "region": null, "country": "us", "remote": true, "hybrid": false, "fullLocation": "Remote - US" }
+      }
+    ]
+  },
+  "details": {
+    "posting-1": {
+      "id": "posting-1",
+      "jobAd": {
+        "sections": {
+          "jobDescription": { "title": "Job Description", "text": "<p>Build great things.</p>" },
+          "qualifications": { "title": "Qualifications", "text": "<p>5+ years experience.</p>" }
+        }
+      }
+    },
+    "posting-2": {
+      "id": "posting-2",
+      "jobAd": {
+        "sections": {
+          "jobDescription": { "title": "Job Description", "text": "<p>Help our customers.</p>" }
+        }
+      }
+    }
+  }
+}
