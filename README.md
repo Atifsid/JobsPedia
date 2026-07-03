@@ -1,13 +1,14 @@
 # jobspedia
 
-Merges two job-data sources into one local dataset and serves it over a small local
+Merges three job-data sources into one local dataset and serves it over a small local
 API:
 
-1. **Aggregator boards** (LinkedIn, Indeed, Glassdoor, …) via the `jobspy-js` npm
-   package.
-2. **ATS-direct** sources (Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
+1. **ATS-direct** sources (Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
    Recruitee, Comeet, BreezyHR, JobScore, Personio, BambooHR) via thin hand-written
    fetchers that hit each platform's public JSON/XML API.
+2. **API providers** (RemoteOK, Remotive) that return their entire board in one call.
+3. **Aggregator boards** (LinkedIn, Indeed, Glassdoor, …) via the `jobspy-js` npm
+   package.
 
 Both are normalized into one schema, deduplicated, written to a local SQLite file,
 and exposed via `POST /jobs/search`. See `CLAUDE.md` for the full architecture,
@@ -30,8 +31,9 @@ curl -X POST http://localhost:8080/jobs/search \
 ## Commands
 
 ```bash
-npm run crawl                 # ATS crawl (aggregators are off by default — see Assumptions)
-npm run crawl -- --only ats   # same as above, explicit
+npm run crawl                 # ATS + API crawl (RemoteOK, Remotive; aggregators off by default)
+npm run crawl -- --only ats   # ATS-only crawl
+npm run crawl -- --only apis  # API-only crawl
 npm run crawl -- --only aggregators   # jobspy-js crawl (LinkedIn/Indeed/Glassdoor)
 npm run serve                 # start the read API on :8080
 npm run typecheck             # tsc --noEmit
@@ -43,11 +45,10 @@ npm test                      # vitest
 Ambiguities encountered while building this from the `CLAUDE.md` spec, and the
 choices made:
 
-- **Aggregators default to off, not just under `--only ats`.** The build brief said
-  to wire up `jobspy-js` but leave it off in the seed crawl. Concretely: plain
-  `npm run crawl` and `npm run crawl -- --only ats` behave identically (ATS only).
-  The *only* way to run the aggregator side is `npm run crawl -- --only aggregators`
-  — there's currently no flag to run both in one invocation.
+- **Default crawl includes ATS + APIs (RemoteOK, Remotive), but aggregators stay off.**
+  Plain `npm run crawl` and `npm run crawl -- --only ats` no longer behave identically — the
+  default now runs both ATS and API providers, while aggregators (LinkedIn/Indeed/Glassdoor)
+  remain opt-in only via `npm run crawl -- --only aggregators`.
 - **`seniority` is a structured column, but still title-derived under the hood.**
   The old `experience` filter was a substring match against the job `title` with no
   backing column. It's been replaced by `seniority: string[]` — an exact-match filter
@@ -120,6 +121,27 @@ the time of writing — see `src/config.ts`):
 | Personio        | `personio` |
 | Comeet          | `61.003:16358C6EF2C61631639B558C0429` |
 | BambooHR        | `soundstripe` |
+
+## API providers
+
+Unlike ATS platforms (which you seed per company), API providers return their entire
+board in one call — no per-company configuration. Two providers are currently included:
+
+| Platform  | Coverage |
+|-----------|----------|
+| RemoteOK  | Remote-first job board (~20k listings) |
+| Remotive  | Remote software jobs globally |
+
+Both run as part of the default `npm run crawl` (no `--only` flag needed).
+
+## Remote/visa sponsorship filtering
+
+All jobs include a `visaSponsorship` field (ternary: `true`/`false`/`null`) indicating
+confirmed H-1B sponsorship status (cross-referenced against the USCIS H-1B Employer Data
+Hub at crawl time). The `/jobs/search` API accepts `visaSponsorship: true` or `false` to
+filter by sponsorship status; omit the field for no filter. When set to a specific value,
+unknown (null) rows are excluded — use this to find only confirmed sponsors or
+non-sponsors.
 
 ## Project layout
 

@@ -67,6 +67,11 @@ src/
       personio.ts
       bamboohr.ts
       index.ts       # registry: exported list of all ATS scrapers
+    apis/
+      base.ts        # ApiProvider interface (no-seed, direct-fetch APIs)
+      remoteok.ts
+      remotive.ts
+      index.ts       # registry: exported list of all API providers
   dedupe.ts          # dedupeAndMerge(jobs): Job[]
   db.ts              # SQLite init/migrations, upsert, markStale
   crawl.ts           # orchestrator — run sources, normalize, dedupe, upsert (cron entry)
@@ -98,6 +103,7 @@ Request body:
   "keywords":  ["python", "aws"],    // string[], optional — matches title+company+description
   "company":   "Stripe",             // optional — substring match
   "remote":    true,                 // boolean, optional
+  "visaSponsorship": true,           // boolean, optional — true/false excludes unknown (null); omit for no filter
   "city":      "Berlin",             // optional
   "region":    "BE",                 // optional
   "country":   "DE",                 // optional
@@ -135,6 +141,7 @@ CREATE TABLE jobs (
   seniority    TEXT,               -- derived from title at crawl time: internship/entry/mid/
                                     -- senior/lead/staff/principal
   is_remote    INTEGER DEFAULT 0,
+  visa_sponsorship INTEGER,         -- 1 = confirmed sponsor, 0 = does not sponsor, NULL = unknown
   salary_min   INTEGER, salary_max INTEGER, currency TEXT,
   apply_url    TEXT NOT NULL,
   description  TEXT,
@@ -190,6 +197,28 @@ don't invent it.
 
 **Skip browser-required sources** (e.g. Meta, Tesla — they need a headless browser in
 the Python version). Not worth it. Only add one if a must-have company forces it.
+
+## Adding an API provider
+
+Unlike ATS scrapers (which fetch per-company via a slug), API providers return their
+entire board in one call — no per-company scoping. RemoteOK and Remotive are the
+current examples. The interface is simpler:
+
+1. Create `src/sources/apis/<platform>.ts` implementing `ApiProvider` from `base.ts`:
+   ```ts
+   export const remoteok: ApiProvider = {
+     platform: "remoteok",
+     async fetch(): Promise<Job[]> {
+       const res = await fetch("https://remoteok.com/api");
+       const jobs = await res.json();
+       return jobs.map(toJob); // map into the canonical schema, source: "aggregator"
+     },
+   };
+   ```
+2. Register it in `src/sources/apis/index.ts`.
+3. Add a test with a recorded fixture (never hit the network in tests).
+
+Reach for the same helpers in `src/sources/common/` as ATS scrapers do.
 
 ## Aggregators via jobspy-js
 
