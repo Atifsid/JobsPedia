@@ -1,0 +1,37 @@
+[
+  {
+    "legal": "API Terms of Service: Please link back..."
+  },
+  {
+    "slug": "senior-backend-engineer-acme-corp-111111",
+    "id": "111111",
+    "epoch": 1780000000,
+    "date": "2026-01-15T10:00:00+00:00",
+    "company": "Acme Corp",
+    "company_logo": "",
+    "position": "Senior Backend Engineer",
+    "tags": ["dev", "backend", "node"],
+    "description": "<p>Build great things.</p>",
+    "url": "https://remoteok.com/remote-jobs/senior-backend-engineer-acme-corp-111111",
+    "apply_url": "https://remoteok.com/remote-jobs/senior-backend-engineer-acme-corp-111111",
+    "location": "Worldwide",
+    "salary_min": 120000,
+    "salary_max": 160000
+  },
+  {
+    "slug": "support-engineer-acme-corp-222222",
+    "id": "222222",
+    "epoch": 1782000000,
+    "date": "2026-02-01T10:00:00+00:00",
+    "company": "Acme Corp",
+    "company_logo": "",
+    "position": "Support Engineer",
+    "tags": ["support"],
+    "description": "<p>Help our customers.</p>",
+    "url": "https://remoteok.com/remote-jobs/support-engineer-acme-corp-222222",
+    "apply_url": "https://remoteok.com/remote-jobs/support-engineer-acme-corp-222222",
+    "location": "",
+    "salary_min": 0,
+    "salary_max": 0
+  }
+]
