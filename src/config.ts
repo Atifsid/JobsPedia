@@ -1,7 +1,20 @@
 import type { Platform } from "./schema.js";
 
 export interface AtsSeed {
-  platform: Extract<Platform, "greenhouse" | "lever" | "ashby">;
+  platform: Extract<
+    Platform,
+    | "greenhouse"
+    | "lever"
+    | "ashby"
+    | "smartrecruiters"
+    | "workable"
+    | "recruitee"
+    | "comeet"
+    | "breezyhr"
+    | "jobscore"
+    | "personio"
+    | "bamboohr"
+  >;
   slug: string;
 }
 
