@@ -1,11 +1,12 @@
-import type { NewJob } from "../../schema.js";
-import { jobId } from "../../lib/id.js";
-import { deriveSeniority } from "../../seniority.js";
+import { fetchJson } from "../common/http.js";
 import { stripHtml } from "../common/html.js";
 import { parseLocation } from "../common/location.js";
 import { sanitizeSalary } from "../common/salary.js";
 import { humanizeSlug } from "../common/slug.js";
-import { fetchJson, type AtsScraper } from "./base.js";
+import type { AtsScraper } from "./base.js";
+import type { NewJob } from "../../schema.js";
+import { jobId } from "../../lib/id.js";
+import { deriveSeniority } from "../../seniority.js";
 
 interface LeverSalaryRange {
   min?: number | null;
