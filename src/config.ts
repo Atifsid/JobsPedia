@@ -37,6 +37,7 @@ export const atsSeeds: AtsSeed[] = [
   { platform: "workable", slug: "jobrack" },
   { platform: "breezyhr", slug: "new-incentives" },
   { platform: "jobscore", slug: "jobscore" },
+  { platform: "personio", slug: "personio" },
 ];
 
 /** Search terms used to seed the (opt-in, off-by-default) aggregator crawl. */
