@@ -1,0 +1,6 @@
+[
+  { "slug": "airbnb", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
+  { "slug": "cloudflare", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
+  { "slug": "figma", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
+  { "slug": "stripe", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" }
+]

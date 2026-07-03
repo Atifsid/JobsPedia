@@ -1,53 +1,9 @@
-import type { Platform } from "./schema.js";
+import { loadAllSeeds } from "./seeds/store.js";
 
-export interface AtsSeed {
-  platform: Extract<
-    Platform,
-    | "greenhouse"
-    | "lever"
-    | "ashby"
-    | "smartrecruiters"
-    | "workable"
-    | "recruitee"
-    | "comeet"
-    | "breezyhr"
-    | "jobscore"
-    | "personio"
-    | "bamboohr"
-  >;
-  slug: string;
-}
+export type { AtsSeed, AtsSeedEntry } from "./seeds/store.js";
 
-/**
- * Seed companies to crawl on each ATS platform. All slugs below were verified live
- * against their public JSON boards while building this project (each returned a
- * non-empty job list) — see README "Assumptions" for the verification method.
- */
-export const atsSeeds: AtsSeed[] = [
-  { platform: "greenhouse", slug: "stripe" },
-  { platform: "greenhouse", slug: "airbnb" },
-  { platform: "greenhouse", slug: "figma" },
-  { platform: "greenhouse", slug: "cloudflare" },
-  { platform: "lever", slug: "gohighlevel" },
-  { platform: "lever", slug: "q-ctrl" },
-  { platform: "lever", slug: "achievers" },
-  { platform: "ashby", slug: "ramp" },
-  { platform: "ashby", slug: "linear" },
-  { platform: "ashby", slug: "notion" },
-  { platform: "workable", slug: "jobrack" },
-  { platform: "breezyhr", slug: "new-incentives" },
-  { platform: "jobscore", slug: "jobscore" },
-  { platform: "personio", slug: "personio" },
-  { platform: "recruitee", slug: "jobs" },
-  { platform: "smartrecruiters", slug: "visa" },
-  // Comeet's list-positions endpoint requires a per-company token in addition to the
-  // company_uid (its 400 response otherwise reads "Token is missing") — both values
-  // are embedded in the public HTML of the company's Comeet-hosted careers page, so
-  // this is not a private credential. Encoded here as "<company_uid>:<token>"; see
-  // src/sources/ats/comeet.ts for details.
-  { platform: "comeet", slug: "61.003:16358C6EF2C61631639B558C0429" },
-  { platform: "bamboohr", slug: "soundstripe" },
-];
+/** Seed companies to crawl on each ATS platform, loaded from `src/seeds/<platform>.json`. */
+export const atsSeeds = loadAllSeeds();
 
 /** Search terms used to seed the (opt-in, off-by-default) aggregator crawl. */
 export const aggregatorSearchTerms: string[] = [
