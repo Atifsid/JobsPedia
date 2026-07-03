@@ -59,6 +59,7 @@ async function crawlAts(): Promise<{ jobs: NewJob[]; results: SourceResult[] }> 
   const jobs: NewJob[] = [];
   const results: SourceResult[] = [];
   for (const seed of atsSeeds) {
+    console.log(`[crawl] ATS ${seed.platform}:${seed.slug}`);
     const scraper = atsScrapers.find((s) => s.platform === seed.platform);
     const label = `${seed.platform}:${seed.slug}`;
     if (!scraper) {
@@ -67,6 +68,7 @@ async function crawlAts(): Promise<{ jobs: NewJob[]; results: SourceResult[] }> 
     }
     try {
       const valid = validate(await scraper.fetch(seed.slug), label);
+      console.log(`[crawl] ATS ${seed.platform}:${seed.slug} -> ${valid.length} jobs`);
       jobs.push(...valid);
       results.push({ label, ok: true, count: valid.length });
     } catch (err) {
@@ -82,6 +84,7 @@ async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResu
   const jobs: NewJob[] = [];
   const results: SourceResult[] = [];
   for (const term of aggregatorSearchTerms) {
+    console.log(`[crawl] Aggregator "${term}"`);
     const label = `aggregator:${term}`;
     try {
       const raw = await retry(() =>
@@ -93,6 +96,7 @@ async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResu
         }),
       );
       const valid = validate(raw, label);
+      console.log(`[crawl] Aggregator "${term}" -> ${valid.length} jobs`);
       jobs.push(...valid);
       results.push({ label, ok: true, count: valid.length });
     } catch (err) {
@@ -100,7 +104,9 @@ async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResu
       results.push({ label, ok: false, count: 0, error });
       console.error(`[crawl] ${label} failed: ${error}`);
     }
-    await sleep(randomDelay());
+    const delay = randomDelay();
+    console.log(`[crawl] Waiting ${Math.round(delay / 1000)}s`);
+    await sleep(delay);
   }
   return { jobs, results };
 }
@@ -132,8 +138,10 @@ async function main(): Promise<void> {
   } else if (mode === "aggregator") {
     ({ jobs: rawJobs, results } = await crawlAggregators());
   } else {
-    const ats = await crawlAts();
-    const aggregators = await crawlAggregators();
+    const [aggregators, ats] = await Promise.all([
+      crawlAggregators(),
+      crawlAts(),
+    ]);
 
     rawJobs = [...ats.jobs, ...aggregators.jobs];
     results = [...ats.results, ...aggregators.results];
