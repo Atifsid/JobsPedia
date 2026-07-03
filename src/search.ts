@@ -102,6 +102,9 @@ export function searchJobs(db: Database.Database, params: SearchRequest): Search
     conditionBinds.push(params.maxSalary);
   }
   if (params.daysAgo !== undefined) {
+    // Unlike minSalary/maxSalary (which never exclude on missing data), this filter
+    // excludes jobs with a NULL date_posted: freshness can't be confirmed for an
+    // undated posting, so it's treated as not matching rather than always-included.
     // Compare by calendar day only (date(), not datetime()) — date_posted values are
     // stored as ISO 8601 with a "T" separator ("2026-06-25T00:00:00Z"), while
     // datetime('now', ...) returns a space-separated string ("2026-06-23 10:15:00").
@@ -141,6 +144,9 @@ export function searchJobs(db: Database.Database, params: SearchRequest): Search
   }
 
   const rows = db.prepare(sql).all(...binds) as (JobRow & { total_count: number })[];
+  // total_count comes from COUNT(*) OVER() on the returned page, so it's only known
+  // when at least one row comes back. Requesting a page past the last page of
+  // results yields zero rows and thus `total: 0` here, not the true total.
   const total = rows[0]?.total_count ?? 0;
   return { jobs: rows.map(rowToJob), page, count: rows.length, total };
 }

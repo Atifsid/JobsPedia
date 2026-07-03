@@ -47,11 +47,15 @@ choices made:
   `npm run crawl` and `npm run crawl -- --only ats` behave identically (ATS only).
   The *only* way to run the aggregator side is `npm run crawl -- --only aggregators`
   — there's currently no flag to run both in one invocation.
-- **No DB column for `experience`.** The `/jobs/search` request contract includes an
-  `experience` filter, but the DB schema in `CLAUDE.md` has no matching column.
-  Rather than add an undocumented column, `search.ts` treats it as a best-effort
-  substring match against the job `title` (e.g. `"Senior"` matches "Senior Backend
-  Engineer"). This is a heuristic, not a structured seniority filter.
+- **`seniority` is a structured column, but still title-derived under the hood.**
+  The old `experience` filter was a substring match against the job `title` with no
+  backing column. It's been replaced by `seniority: string[]` — an exact-match filter
+  against a real `jobs.seniority` column (`internship`/`entry`/`mid`/`senior`/`lead`/
+  `staff`/`principal`). The column itself is still populated by a keyword-rule
+  classifier (`deriveSeniority()` in `src/seniority.ts`) run against the title at
+  crawl time, not sourced from structured ATS/aggregator data — so it's queryable and
+  exact-match at request time, but the underlying classification is still a heuristic
+  and can misclassify an unusual title.
 - **Company name for Lever and Ashby.** Neither platform's public JSON includes a
   company display name in the posting payload, and the `AtsScraper.fetch(slug)`
   signature (as specified) takes only the slug — no side-channel for a display name.

@@ -83,23 +83,28 @@ Request body:
 
 ```jsonc
 {
-  "title":    "software engineer",   // string, optional
-  "keywords": ["python", "aws"],     // string[], optional
-  "remote":   true,                  // boolean, optional
-  "city":     "Berlin",              // optional
-  "region":   "BE",                  // optional
-  "country":  "DE",                  // optional
-  "experience": "Senior",            // optional
-  "source":   "ats",                 // "ats" | "aggregator" — omit for both
-  "page":     1,                     // default 1
-  "limit":    20                     // default 20, capped at 100
+  "title":     "software engineer",  // string, optional — matches jobs.title only
+  "keywords":  ["python", "aws"],    // string[], optional — matches title+company+description
+  "company":   "Stripe",             // optional — substring match
+  "remote":    true,                 // boolean, optional
+  "city":      "Berlin",             // optional
+  "region":    "BE",                 // optional
+  "country":   "DE",                 // optional
+  "seniority": ["senior", "staff"],  // string[], optional — exact match against jobs.seniority;
+                                      // one of internship/entry/mid/senior/lead/staff/principal
+  "minSalary": 100000,               // optional — never excludes jobs with undisclosed salary
+  "maxSalary": 180000,               // optional — never excludes jobs with undisclosed salary
+  "daysAgo":   30,                   // optional — freshness filter on date_posted
+  "source":    "ats",                // "ats" | "aggregator" — omit for both
+  "page":      1,                    // default 1
+  "limit":     20                    // default 20, capped at 100
 }
 ```
 
 Response:
 
 ```jsonc
-{ "jobs": [ /* Job rows */ ], "page": 1, "count": 20 }
+{ "jobs": [ /* Job rows */ ], "page": 1, "count": 20, "total": 137 }
 ```
 
 Do not rename these fields casually — changing them breaks JobFlowAI's
@@ -116,6 +121,8 @@ CREATE TABLE jobs (
   company      TEXT NOT NULL,
   location     TEXT,
   city         TEXT, region TEXT, country TEXT,
+  seniority    TEXT,               -- derived from title at crawl time: internship/entry/mid/
+                                    -- senior/lead/staff/principal
   is_remote    INTEGER DEFAULT 0,
   salary_min   INTEGER, salary_max INTEGER, currency TEXT,
   apply_url    TEXT NOT NULL,
