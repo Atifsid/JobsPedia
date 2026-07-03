@@ -36,7 +36,14 @@ describe("searchJobs", () => {
       job({ id: "1", title: "Senior Software Engineer", city: "Berlin", country: "DE", seniority: "senior", isRemote: false, salaryMin: 80000, salaryMax: 110000, datePosted: "2026-06-25" }),
       job({
         id: "2",
-        title: "Product Manager",
+        // Title deliberately contains one of the two words the crossover test
+        // searches for ("software") while the OTHER word ("developers") appears
+        // only in the description below. This is what makes the regression test
+        // meaningful: an unscoped (title+company+description) FTS match would
+        // find both words somewhere in the combined document and incorrectly
+        // match, while a title-scoped match correctly requires both words to
+        // appear in jobs.title itself and correctly excludes this job.
+        title: "Software Product Manager",
         city: "Paris",
         country: "FR",
         seniority: "mid",
@@ -74,9 +81,17 @@ describe("searchJobs", () => {
   });
 
   it("title search matches only the title column, not description mentions", () => {
-    // job 2 (Product Manager) mentions "developers" only in its description —
-    // a title search for "Software Developer" must not match it.
-    const res = searchJobs(db, { title: "Software Developer", page: 1, limit: 20 });
+    // job 2's title ("Software Product Manager") contains "software" but NOT
+    // "developers" — that word only appears in its description. A search for
+    // both terms in the title must therefore find nothing.
+    //
+    // This is the actual crossover case the fix guards against: with the old
+    // unscoped (title+company+description) FTS match, "software" (title) and
+    // "developers" (description) would both be present somewhere in job 2's
+    // combined document and the AND-of-terms query would incorrectly match it.
+    // Title-scoping requires both words to appear in jobs.title itself, so job
+    // 2 is correctly excluded.
+    const res = searchJobs(db, { title: "Software Developers", page: 1, limit: 20 });
     expect(res.jobs.map((j) => j.id).sort()).toEqual([]);
   });
 
