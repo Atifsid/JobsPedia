@@ -30,6 +30,7 @@ describe("themuse provider", () => {
     expect(fetchMock).toHaveBeenCalledWith(
       "https://www.themuse.com/api/public/jobs?page=1&category=Data%20and%20Analytics",
     );
+    expect(fetchMock).toHaveBeenCalledTimes(4);
 
     expect(jobs[0]).toMatchObject({
       title: "Senior Backend Engineer",
