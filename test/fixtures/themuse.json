@@ -1,0 +1,40 @@
+{
+  "page": 1,
+  "page_count": 5080,
+  "items_per_page": 20,
+  "took": 12,
+  "timed_out": false,
+  "total": 101600,
+  "results": [
+    {
+      "contents": "<p>Build great <b>backend</b> systems.</p>",
+      "name": "Senior Backend Engineer",
+      "type": "external",
+      "publication_date": "2026-01-15T10:00:00Z",
+      "short_name": "senior-backend-engineer-111111",
+      "model_type": "jobs",
+      "id": 111111,
+      "locations": [{ "name": "New York, NY" }],
+      "categories": [{ "name": "Software Engineering" }],
+      "levels": [{ "name": "Senior Level", "short_name": "senior" }],
+      "tags": [],
+      "refs": { "landing_page": "https://www.themuse.com/jobs/acmecorp/senior-backend-engineer-111111" },
+      "company": { "id": 1, "short_name": "acmecorp", "name": "Acme Corp" }
+    },
+    {
+      "contents": "<p>Support our customers remotely.</p>",
+      "name": "Support Engineer",
+      "type": "external",
+      "publication_date": "2026-02-01T10:00:00Z",
+      "short_name": "support-engineer-222222",
+      "model_type": "jobs",
+      "id": 222222,
+      "locations": [{ "name": "Flexible / Remote" }],
+      "categories": [{ "name": "Software Engineering" }],
+      "levels": [{ "name": "Entry Level", "short_name": "entry" }],
+      "tags": [],
+      "refs": { "landing_page": "https://www.themuse.com/jobs/acmecorp/support-engineer-222222" },
+      "company": { "id": 1, "short_name": "acmecorp", "name": "Acme Corp" }
+    }
+  ]
+}
