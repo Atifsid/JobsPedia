@@ -1,7 +1,9 @@
 import type { NewJob } from "../../schema.js";
 import { jobId } from "../../lib/id.js";
 import { deriveSeniority } from "../../seniority.js";
-import { fetchJson, parseLocation, stripHtml, type AtsScraper } from "./base.js";
+import { stripHtml } from "../common/html.js";
+import { parseLocation } from "../common/location.js";
+import { fetchJson, type AtsScraper } from "./base.js";
 
 interface GreenhouseJob {
   id: number;

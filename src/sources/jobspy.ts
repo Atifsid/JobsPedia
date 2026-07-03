@@ -2,7 +2,9 @@ import { scrapeJobs, type ScrapeJobsParams } from "jobspy-js";
 import { jobId } from "../lib/id.js";
 import { deriveSeniority } from "../seniority.js";
 import type { NewJob, Platform } from "../schema.js";
-import { parseLocation, sanitizeSalary, stripHtml } from "./ats/base.js";
+import { stripHtml } from "./common/html.js";
+import { parseLocation } from "./common/location.js";
+import { sanitizeSalary } from "./common/salary.js";
 
 interface FlatJobRecord {
   site: string;
