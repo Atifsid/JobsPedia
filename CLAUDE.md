@@ -141,7 +141,8 @@ CREATE TABLE jobs (
   seniority    TEXT,               -- derived from title at crawl time: internship/entry/mid/
                                     -- senior/lead/staff/principal
   is_remote    INTEGER DEFAULT 0,
-  visa_sponsorship INTEGER,         -- 1 = confirmed sponsor, 0 = does not sponsor, NULL = unknown
+  visa_sponsorship INTEGER,         -- 1 = confirmed H-1B sponsor (USCIS match), NULL = unknown
+                                    -- (0/false supported by column/filter but not set by any provider)
   salary_min   INTEGER, salary_max INTEGER, currency TEXT,
   apply_url    TEXT NOT NULL,
   description  TEXT,

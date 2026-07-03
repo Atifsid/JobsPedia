@@ -18,7 +18,7 @@ schema, and conventions this project follows.
 
 ```bash
 npm install
-npm run crawl -- --only ats   # populate data/jobs.db from live ATS boards
+npm run crawl -- --only ats   # populate data/jobs.db from live ATS + API sources
 npm run serve                 # start the read API on :8080
 ```
 
@@ -31,9 +31,9 @@ curl -X POST http://localhost:8080/jobs/search \
 ## Commands
 
 ```bash
-npm run crawl                 # ATS + API crawl (RemoteOK, Remotive; aggregators off by default)
-npm run crawl -- --only ats   # ATS-only crawl
-npm run crawl -- --only apis  # API-only crawl
+npm run crawl                 # ATS + API crawl (same as --only ats; aggregators off by default)
+npm run crawl -- --only ats   # same as bare npm run crawl — ATS + API providers
+npm run crawl -- --only apis  # API-only crawl (RemoteOK, Remotive)
 npm run crawl -- --only aggregators   # jobspy-js crawl (LinkedIn/Indeed/Glassdoor)
 npm run serve                 # start the read API on :8080
 npm run typecheck             # tsc --noEmit
@@ -46,9 +46,9 @@ Ambiguities encountered while building this from the `CLAUDE.md` spec, and the
 choices made:
 
 - **Default crawl includes ATS + APIs (RemoteOK, Remotive), but aggregators stay off.**
-  Plain `npm run crawl` and `npm run crawl -- --only ats` no longer behave identically — the
-  default now runs both ATS and API providers, while aggregators (LinkedIn/Indeed/Glassdoor)
-  remain opt-in only via `npm run crawl -- --only aggregators`.
+  Plain `npm run crawl` and `npm run crawl -- --only ats` behave identically — both run ATS
+  and API providers together. Aggregators (LinkedIn/Indeed/Glassdoor) remain opt-in only via
+  `npm run crawl -- --only aggregators`.
 - **`seniority` is a structured column, but still title-derived under the hood.**
   The old `experience` filter was a substring match against the job `title` with no
   backing column. It's been replaced by `seniority: string[]` — an exact-match filter
