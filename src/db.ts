@@ -2,7 +2,7 @@ import Database from "better-sqlite3";
 import { existsSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Job, NewJob, Source } from "./schema.js";
+import type { Job, NewJob, Platform, Source } from "./schema.js";
 
 export const DEFAULT_DB_PATH = fileURLToPath(
   new URL("../data/jobs.db", import.meta.url),
@@ -189,16 +189,26 @@ export function upsertJobs(db: Database.Database, jobs: NewJob[]): void {
   run(jobs);
 }
 
-/** Mark jobs of a given source inactive if they weren't seen in the current crawl run. */
+/**
+ * Mark jobs of a given source inactive if they weren't seen in the current crawl run.
+ * When `platforms` is provided, only rows whose platform is in that list are touched —
+ * this scopes the staleness check to the platforms actually crawled this invocation,
+ * since `source` alone (e.g. "aggregator") can span multiple independent crawl paths
+ * (jobspy-js vs. the RemoteOK/Remotive API providers) that don't all run every invocation.
+ */
 export function markStale(
   db: Database.Database,
   seenIds: Iterable<string>,
   source: Source,
+  platforms?: Platform[],
 ): void {
   const ids = Array.from(seenIds);
+  const platformClause =
+    platforms && platforms.length > 0 ? ` AND platform IN (${platforms.map(() => "?").join(",")})` : "";
+  const platformBinds = platforms && platforms.length > 0 ? platforms : [];
   const sql =
     ids.length > 0
-      ? `UPDATE jobs SET is_active = 0 WHERE source = ? AND is_active = 1 AND id NOT IN (${ids.map(() => "?").join(",")})`
-      : `UPDATE jobs SET is_active = 0 WHERE source = ? AND is_active = 1`;
-  db.prepare(sql).run(source, ...ids);
+      ? `UPDATE jobs SET is_active = 0 WHERE source = ? AND is_active = 1${platformClause} AND id NOT IN (${ids.map(() => "?").join(",")})`
+      : `UPDATE jobs SET is_active = 0 WHERE source = ? AND is_active = 1${platformClause}`;
+  db.prepare(sql).run(source, ...platformBinds, ...ids);
 }

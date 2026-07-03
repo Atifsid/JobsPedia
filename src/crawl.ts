@@ -1,9 +1,11 @@
 import { aggregatorConfig, aggregatorSearchTerms, atsSeeds } from "./config.js";
 import { dedupeAndMerge } from "./dedupe.js";
 import { markStale, openDb, upsertJobs } from "./db.js";
-import { newJobSchema, type NewJob } from "./schema.js";
+import { newJobSchema, type NewJob, type Platform } from "./schema.js";
+import { apiProviders } from "./sources/apis/index.js";
 import { atsScrapers } from "./sources/ats/index.js";
 import { fetchAggregatorJobs } from "./sources/jobspy.js";
+import { fetchH1BSponsors, tagVisaSponsorship } from "./visaSponsorship.js";
 
 interface SourceResult {
   label: string;
@@ -80,6 +82,26 @@ async function crawlAts(): Promise<{ jobs: NewJob[]; results: SourceResult[] }> 
   return { jobs, results };
 }
 
+async function crawlApis(): Promise<{ jobs: NewJob[]; results: SourceResult[] }> {
+  const jobs: NewJob[] = [];
+  const results: SourceResult[] = [];
+  for (const provider of apiProviders) {
+    const label = `api:${provider.platform}`;
+    console.log(`[crawl] API ${provider.platform}`);
+    try {
+      const valid = validate(await provider.fetch(), label);
+      console.log(`[crawl] API ${provider.platform} -> ${valid.length} jobs`);
+      jobs.push(...valid);
+      results.push({ label, ok: true, count: valid.length });
+    } catch (err) {
+      const error = err instanceof Error ? err.message : String(err);
+      results.push({ label, ok: false, count: 0, error });
+      console.error(`[crawl] ${label} failed: ${error}`);
+    }
+  }
+  return { jobs, results };
+}
+
 async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResult[] }> {
   const jobs: NewJob[] = [];
   const results: SourceResult[] = [];
@@ -115,12 +137,13 @@ async function crawlAggregators(): Promise<{ jobs: NewJob[]; results: SourceResu
  * `--only aggregators` is the only way to run the jobspy-js side — it stays off by
  * default (and under `--only ats`) since it's the slower, rate-limit-prone half.
  */
-type CrawlMode = "ats" | "aggregator" | "all";
+type CrawlMode = "ats" | "apis" | "aggregator" | "all";
 
 function parseMode(argv: string[]): CrawlMode {
   const idx = argv.indexOf("--only");
   const value = idx !== -1 ? argv[idx + 1] : undefined;
 
+  if (value === "apis") return "apis";
   if (value === "aggregators") return "aggregator";
   if (value === "all") return "all";
   return "ats";
@@ -134,18 +157,33 @@ async function main(): Promise<void> {
   let results: SourceResult[] = [];
 
   if (mode === "ats") {
-    ({ jobs: rawJobs, results } = await crawlAts());
+    const [ats, apis] = await Promise.all([crawlAts(), crawlApis()]);
+    rawJobs = [...ats.jobs, ...apis.jobs];
+    results = [...ats.results, ...apis.results];
+  } else if (mode === "apis") {
+    ({ jobs: rawJobs, results } = await crawlApis());
   } else if (mode === "aggregator") {
     ({ jobs: rawJobs, results } = await crawlAggregators());
   } else {
-    const [aggregators, ats] = await Promise.all([
+    const [aggregators, ats, apis] = await Promise.all([
       crawlAggregators(),
       crawlAts(),
+      crawlApis(),
     ]);
 
-    rawJobs = [...ats.jobs, ...aggregators.jobs];
-    results = [...ats.results, ...aggregators.results];
+    rawJobs = [...ats.jobs, ...aggregators.jobs, ...apis.jobs];
+    results = [...ats.results, ...aggregators.results, ...apis.results];
   }
+
+  try {
+    const sponsors = await fetchH1BSponsors();
+    rawJobs = tagVisaSponsorship(rawJobs, sponsors);
+    console.log(`[crawl] visa-sponsor cross-reference: ${sponsors.size} known H-1B sponsors loaded`);
+  } catch (err) {
+    const error = err instanceof Error ? err.message : String(err);
+    console.error(`[crawl] visa-sponsor cross-reference failed, continuing without it: ${error}`);
+  }
+
   const merged = dedupeAndMerge(rawJobs);
 
   const db = openDb();
@@ -159,11 +197,19 @@ async function main(): Promise<void> {
       );
     }
 
+    const crawledAggregatorPlatforms: Platform[] = [];
     if (mode === "aggregator" || mode === "all") {
+      crawledAggregatorPlatforms.push(...aggregatorConfig.site_name);
+    }
+    if (mode === "ats" || mode === "apis" || mode === "all") {
+      crawledAggregatorPlatforms.push(...apiProviders.map((p) => p.platform));
+    }
+    if (crawledAggregatorPlatforms.length > 0) {
       markStale(
         db,
         rawJobs.filter((j) => j.source === "aggregator").map((j) => j.id),
         "aggregator",
+        crawledAggregatorPlatforms,
       );
     }
   } finally {
