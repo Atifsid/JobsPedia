@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "id": "111111",
+      "title": "Senior Backend Engineer",
+      "company": { "display_name": "Acme Corp" },
+      "location": { "display_name": "London, UK", "area": ["UK", "London"] },
+      "description": "Build great things.",
+      "salary_min": 80000,
+      "salary_max": 100000,
+      "salary_is_predicted": "0",
+      "contract_type": "permanent",
+      "contract_time": "full_time",
+      "category": { "label": "IT Jobs", "tag": "it-jobs" },
+      "created": "2026-01-15T10:00:00Z",
+      "redirect_url": "https://www.adzuna.co.uk/land/ad/111111"
+    },
+    {
+      "id": "222222",
+      "title": "Remote Support Engineer",
+      "company": { "display_name": "Acme Corp" },
+      "location": { "display_name": "Remote, UK", "area": ["UK"] },
+      "description": "Help our customers remotely.",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_is_predicted": "0",
+      "contract_type": "permanent",
+      "contract_time": "full_time",
+      "category": { "label": "IT Jobs", "tag": "it-jobs" },
+      "created": "2026-02-01T10:00:00Z",
+      "redirect_url": "https://www.adzuna.co.uk/land/ad/222222"
+    }
+  ]
+}
