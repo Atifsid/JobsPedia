@@ -66,6 +66,14 @@ src/
       jobscore.ts
       personio.ts
       bamboohr.ts
+      teamtailor.ts             # public JSON Feed (jsonfeed.org spec)
+      pinpoint.ts               # public JSON, {data: [...]} wrapper (postings.json)
+      rippling.ts               # public JSON, official documented Job Board API
+      oracle_recruiting_cloud.ts # public JSON; compound "{host}:{siteNumber}" slug
+      sap_successfactors.ts      # public XML/RSS full-board feed (sitemal.xml)
+      eightfold.ts                # public JSON for "SmartApply" tenants only;
+                                   # compound "{tenant}:{domain}" slug
+      jobvite.ts                   # HTML scraping via cheerio (no JSON feed exists)
       index.ts       # registry: exported list of all ATS scrapers
     apis/
       base.ts        # ApiProvider interface (no-seed, direct-fetch APIs)

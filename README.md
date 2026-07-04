@@ -4,8 +4,9 @@ Merges three job-data sources into one local dataset and serves it over a small 
 API:
 
 1. **ATS-direct** sources (Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
-   Recruitee, Comeet, BreezyHR, JobScore, Personio, BambooHR) via thin hand-written
-   fetchers that hit each platform's public JSON/XML API.
+   Recruitee, Comeet, BreezyHR, JobScore, Personio, BambooHR, Teamtailor, Pinpoint,
+   Rippling, Oracle Recruiting Cloud, SAP SuccessFactors, Eightfold, Jobvite) via thin
+   hand-written fetchers that hit each platform's public JSON/XML/HTML surface.
 2. **API providers** (RemoteOK, Remotive, The Muse, RemoteJobs.org, Himalayas, Adzuna)
    that return their entire board in one call.
 3. **Aggregator boards** (LinkedIn, Indeed, Glassdoor, …) via the `jobspy-js` npm
@@ -134,6 +135,15 @@ choices made:
   that source's real published constraint is (Adzuna: a hard 250-calls/day quota, so the
   term x country list is kept small; the 3 keyless sources: no published call-count limit found,
   so pagination is bounded instead for local data volume/relevance, not API politeness).
+- **Jobvite is the one ATS provider parsed via HTML, not a JSON/XML API.** Jobvite has no free,
+  keyless JSON feed (its real API requires a company-issued key) — `src/sources/ats/jobvite.ts`
+  parses its server-rendered career-listing page with `cheerio` instead. This is still a plain
+  `fetch()`, no browser/JS execution — just a different content type to parse.
+- **Oracle Recruiting Cloud and Eightfold use a compound seed slug** (`"{host}:{siteNumber}"` and
+  `"{tenant}:{domain}"` respectively), the same `:`-delimited pattern `comeet.ts` already
+  established for its own per-company token. Both are excluded from `detectAts.ts`'s automatic
+  detection (along with SAP SuccessFactors, whose customer-facing domain has no reliable
+  URL-pattern signature at all) — all three are manually seeded only, same as Comeet.
 
 ## Seeded ATS slugs
 
