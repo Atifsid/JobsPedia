@@ -83,7 +83,7 @@ describe("himalayas provider", () => {
     expect(jobs[0]).toMatchObject({
       title: "Senior Backend Engineer",
       company: "Acme Corp",
-      country: "United States",
+      country: "US",
       seniority: "senior",
       isRemote: true,
       salaryMin: 120000,
@@ -108,7 +108,7 @@ describe("himalayas provider", () => {
     expect(platformJob).toMatchObject({
       title: "Senior Platform Engineer",
       company: "Acme Corp",
-      country: "United States",
+      country: "US",
       seniority: "senior",
       isRemote: true,
       salaryMin: 130000,

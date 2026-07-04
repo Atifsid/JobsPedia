@@ -28,7 +28,12 @@ interface HimalayasSearchResponse {
 function toJob(raw: HimalayasJob): NewJob {
   const { salaryMin, salaryMax } = sanitizeSalary(raw.minSalary, raw.maxSalary);
   const restrictions = raw.locationRestrictions ?? [];
-  const country = restrictions.length === 1 ? restrictions[0] : null;
+  const country =
+    restrictions.length === 1
+      ? restrictions[0].toLowerCase() === "united states"
+        ? "US"
+        : restrictions[0]
+      : null;
   return {
     id: jobId(raw.applicationLink),
     title: raw.title,
