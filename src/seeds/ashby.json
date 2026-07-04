@@ -1,5 +1,1836 @@
 [
-  { "slug": "linear", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
-  { "slug": "notion", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
-  { "slug": "ramp", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" }
+  {
+    "slug": "9-mothers",
+    "industries": [
+      "Industrials",
+      "Defense"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:00:50.413Z"
+  },
+  {
+    "slug": "abundant",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "AIOps",
+      "Artificial Intelligence",
+      "API",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:14:37.692Z"
+  },
+  {
+    "slug": "afterquery",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "B2B",
+      "Data Labeling",
+      "Big Data",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:11:09.696Z"
+  },
+  {
+    "slug": "agentmail",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Developer Tools",
+      "API",
+      "Email"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:07:35.752Z"
+  },
+  {
+    "slug": "aiprise",
+    "industries": [
+      "Fintech"
+    ],
+    "tags": [
+      "Fintech",
+      "B2B",
+      "Identity",
+      "Compliance",
+      "Regtech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:26.429Z"
+  },
+  {
+    "slug": "alexai",
+    "industries": [
+      "B2B",
+      "Recruiting and Talent"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "SaaS",
+      "B2B",
+      "Recruiting",
+      "HR Tech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:40.927Z"
+  },
+  {
+    "slug": "ambral",
+    "industries": [
+      "B2B",
+      "Sales"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:10:22.610Z"
+  },
+  {
+    "slug": "anara",
+    "industries": [
+      "B2B",
+      "Productivity"
+    ],
+    "tags": [
+      "Consumer",
+      "B2B",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:18:08.072Z"
+  },
+  {
+    "slug": "apolink",
+    "industries": [
+      "Industrials",
+      "Aviation and Space"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:13:40.306Z"
+  },
+  {
+    "slug": "apollo-graphql",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Developer Tools",
+      "Open Source",
+      "GraphQL"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:57:05.885Z"
+  },
+  {
+    "slug": "arini",
+    "industries": [
+      "Healthcare",
+      "Healthcare IT"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Health Tech",
+      "Dental",
+      "Call Center",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:23.426Z"
+  },
+  {
+    "slug": "artie",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Developer Tools",
+      "SaaS",
+      "Data Engineering",
+      "Enterprise Software"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:29:51.542Z"
+  },
+  {
+    "slug": "artosai",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:22:26.569Z"
+  },
+  {
+    "slug": "ashby-embed-demo-org",
+    "industries": [
+      "Healthcare",
+      "Healthcare IT"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Health Tech",
+      "B2B",
+      "Productivity",
+      "Digital Health"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:03.521Z"
+  },
+  {
+    "slug": "astro-mechanica",
+    "industries": [
+      "Industrials",
+      "Aviation and Space"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:23:17.628Z"
+  },
+  {
+    "slug": "athena-hq",
+    "industries": [
+      "B2B",
+      "Marketing"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:11:48.199Z"
+  },
+  {
+    "slug": "auctor",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Generative AI",
+      "SaaS",
+      "Productivity"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:09:42.128Z"
+  },
+  {
+    "slug": "bild-ai",
+    "industries": [
+      "Real Estate and Construction",
+      "Construction"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:13:27.060Z"
+  },
+  {
+    "slug": "blacksmith",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:21:17.742Z"
+  },
+  {
+    "slug": "bland",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:29:25.610Z"
+  },
+  {
+    "slug": "blaxel",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Developer Tools",
+      "Cloud Computing",
+      "Infrastructure"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:10:16.456Z"
+  },
+  {
+    "slug": "blee",
+    "industries": [
+      "Fintech"
+    ],
+    "tags": [
+      "Fintech",
+      "LegalTech",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:37:32.973Z"
+  },
+  {
+    "slug": "brettonai",
+    "industries": [
+      "Fintech"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Fintech",
+      "Payments",
+      "B2B",
+      "Compliance"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:27:40.337Z"
+  },
+  {
+    "slug": "cambio",
+    "industries": [
+      "Real Estate and Construction"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Real Estate",
+      "B2B"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:34:53.055Z"
+  },
+  {
+    "slug": "campfire",
+    "industries": [
+      "B2B",
+      "Finance and Accounting"
+    ],
+    "tags": [
+      "Fintech",
+      "SaaS",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:28:31.638Z"
+  },
+  {
+    "slug": "capimoney",
+    "industries": [
+      "Fintech",
+      "Payments"
+    ],
+    "tags": [
+      "Fintech",
+      "Payments"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:28:41.579Z"
+  },
+  {
+    "slug": "capy",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "AI",
+      "AI Assistant"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:14:07.747Z"
+  },
+  {
+    "slug": "carnot-ai",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:01:03.963Z"
+  },
+  {
+    "slug": "casca",
+    "industries": [
+      "Fintech"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Conversational Banking",
+      "Fintech",
+      "Machine Learning",
+      "Finance"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:29:11.771Z"
+  },
+  {
+    "slug": "circuithub",
+    "industries": [
+      "Industrials",
+      "Manufacturing and Robotics"
+    ],
+    "tags": [
+      "Hard Tech",
+      "Hardware",
+      "Robotics",
+      "Manufacturing",
+      "Automation"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:57:45.867Z"
+  },
+  {
+    "slug": "claim-health",
+    "industries": [
+      "Healthcare"
+    ],
+    "tags": [
+      "Healthcare"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:09:37.217Z"
+  },
+  {
+    "slug": "claimsorted",
+    "industries": [
+      "Fintech",
+      "Insurance"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:20:22.892Z"
+  },
+  {
+    "slug": "clearly-ai",
+    "industries": [
+      "B2B",
+      "Security"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Generative AI",
+      "Security",
+      "Privacy",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:18:15.944Z"
+  },
+  {
+    "slug": "clipboard",
+    "industries": [
+      "Consumer"
+    ],
+    "tags": [
+      "Marketplace",
+      "Consumer Health Services",
+      "Health Tech",
+      "Healthcare"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:53:29.704Z"
+  },
+  {
+    "slug": "codes-health",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Health Tech",
+      "B2B",
+      "LegalTech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:20:16.958Z"
+  },
+  {
+    "slug": "complete",
+    "industries": [
+      "B2B",
+      "Human Resources"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "HR Tech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:41:33.107Z"
+  },
+  {
+    "slug": "concourse",
+    "industries": [
+      "B2B",
+      "Finance and Accounting"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Fintech",
+      "SaaS",
+      "B2B",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:57.382Z"
+  },
+  {
+    "slug": "conveo",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "SaaS",
+      "Feedback",
+      "Market Research",
+      "Enterprise Software",
+      "Conversational AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:18:20.155Z"
+  },
+  {
+    "slug": "coperniq",
+    "industries": [
+      "B2B",
+      "Supply Chain and Logistics"
+    ],
+    "tags": [
+      "SaaS",
+      "Solar Power",
+      "B2B",
+      "Climate",
+      "Renewable Energy"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:03.458Z"
+  },
+  {
+    "slug": "cosine",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Developer Tools",
+      "Generative AI",
+      "Machine Learning",
+      "NLP"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:32:51.987Z"
+  },
+  {
+    "slug": "credal",
+    "industries": [
+      "B2B",
+      "Productivity"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Generative AI",
+      "Cybersecurity",
+      "Enterprise"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:34:03.762Z"
+  },
+  {
+    "slug": "ctgt",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "B2B",
+      "Enterprise"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:14:53.413Z"
+  },
+  {
+    "slug": "david-ai",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:17:49.364Z"
+  },
+  {
+    "slug": "decodahealth",
+    "industries": [
+      "Healthcare",
+      "Healthcare IT"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "SaaS",
+      "Digital Health",
+      "Healthcare IT"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:28:00.911Z"
+  },
+  {
+    "slug": "deepgram",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "AI-Enhanced Learning",
+      "API",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:54:53.283Z"
+  },
+  {
+    "slug": "eightsleep",
+    "industries": [
+      "Consumer",
+      "Home and Personal"
+    ],
+    "tags": [
+      "Hardware",
+      "Health Tech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:55:06.853Z"
+  },
+  {
+    "slug": "ekho",
+    "industries": [
+      "B2B",
+      "Supply Chain and Logistics"
+    ],
+    "tags": [
+      "Auto Commerce",
+      "Fintech",
+      "Compliance",
+      "Automotive"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:30.619Z"
+  },
+  {
+    "slug": "electricair",
+    "industries": [
+      "Real Estate and Construction",
+      "Construction"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:28:55.618Z"
+  },
+  {
+    "slug": "eloquentai",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Fintech",
+      "B2B",
+      "Enterprise",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:08:41.607Z"
+  },
+  {
+    "slug": "elyos",
+    "industries": [
+      "B2B",
+      "Operations"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "SaaS",
+      "B2B",
+      "AI Assistant"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:29:40.463Z"
+  },
+  {
+    "slug": "escape",
+    "industries": [
+      "B2B",
+      "Security"
+    ],
+    "tags": [
+      "Developer Tools",
+      "Security",
+      "API",
+      "GraphQL"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:30:26.035Z"
+  },
+  {
+    "slug": "eventualcomputing",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Computer Vision"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:38:55.572Z"
+  },
+  {
+    "slug": "every-io",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:29:06.681Z"
+  },
+  {
+    "slug": "f2-ai",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:04:31.242Z"
+  },
+  {
+    "slug": "finni-health",
+    "industries": [
+      "Healthcare",
+      "Consumer Health and Wellness"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:30:37.399Z"
+  },
+  {
+    "slug": "finto",
+    "industries": [
+      "B2B",
+      "Finance and Accounting"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Fintech",
+      "B2B",
+      "Enterprise",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:05:53.672Z"
+  },
+  {
+    "slug": "finvest",
+    "industries": [
+      "Fintech",
+      "Consumer Finance"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:34:12.535Z"
+  },
+  {
+    "slug": "firecrawl",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Developer Tools",
+      "Open Source",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:09.782Z"
+  },
+  {
+    "slug": "flai",
+    "industries": [
+      "Industrials",
+      "Automotive"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:06:22.124Z"
+  },
+  {
+    "slug": "fleek",
+    "industries": [
+      "B2B",
+      "Retail"
+    ],
+    "tags": [
+      "Marketplace",
+      "B2B",
+      "E-commerce"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:40:00.782Z"
+  },
+  {
+    "slug": "garage",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Marketplace"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:38.865Z"
+  },
+  {
+    "slug": "gigaml",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:26:04.208Z"
+  },
+  {
+    "slug": "govdash",
+    "industries": [
+      "Government"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Generative AI",
+      "GovTech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:39:09.777Z"
+  },
+  {
+    "slug": "goveagle",
+    "industries": [
+      "Government"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:06.787Z"
+  },
+  {
+    "slug": "greenboard",
+    "industries": [
+      "Fintech"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Fintech",
+      "SaaS",
+      "Compliance",
+      "Operations"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:14.500Z"
+  },
+  {
+    "slug": "happl",
+    "industries": [
+      "B2B",
+      "Human Resources"
+    ],
+    "tags": [
+      "SaaS",
+      "HR Tech",
+      "Insurance"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:42:14.476Z"
+  },
+  {
+    "slug": "harperinsure",
+    "industries": [
+      "Fintech",
+      "Insurance"
+    ],
+    "tags": [
+      "Fintech",
+      "Insurance",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:11:25.596Z"
+  },
+  {
+    "slug": "healthtech-1",
+    "industries": [
+      "Healthcare",
+      "Healthcare IT"
+    ],
+    "tags": [
+      "Health Tech",
+      "Workflow Automation",
+      "Digital Health",
+      "Healthcare",
+      "Healthcare IT"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:25:40.523Z"
+  },
+  {
+    "slug": "hockeystack",
+    "industries": [
+      "B2B",
+      "Sales"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Analytics",
+      "Sales",
+      "Marketing"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:29:56.945Z"
+  },
+  {
+    "slug": "humanarchive",
+    "industries": [
+      "Industrials",
+      "Manufacturing and Robotics"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:00:44.167Z"
+  },
+  {
+    "slug": "hyperbound",
+    "industries": [
+      "B2B",
+      "Sales"
+    ],
+    "tags": [
+      "AI-Enhanced Learning",
+      "B2B",
+      "Sales",
+      "Sales Enablement",
+      "Conversational AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:29:36.692Z"
+  },
+  {
+    "slug": "hypercubic",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:03:57.502Z"
+  },
+  {
+    "slug": "infisical",
+    "industries": [
+      "B2B",
+      "Security"
+    ],
+    "tags": [
+      "Developer Tools",
+      "SaaS",
+      "B2B",
+      "Security",
+      "Open Source"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:34:19.336Z"
+  },
+  {
+    "slug": "influxdata",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Analytics",
+      "Open Source",
+      "Time Series",
+      "Databases"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:57:53.648Z"
+  },
+  {
+    "slug": "inkeep",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "Developer Tools",
+      "Workflow Automation",
+      "Customer Support",
+      "No-code",
+      "AI Assistant"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:32:28.766Z"
+  },
+  {
+    "slug": "intrinsic-safety",
+    "industries": [
+      "B2B",
+      "Security"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Compliance",
+      "Cybersecurity",
+      "Enterprise Software"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:31:55.308Z"
+  },
+  {
+    "slug": "invopop",
+    "industries": [
+      "B2B",
+      "Finance and Accounting"
+    ],
+    "tags": [
+      "FinOps",
+      "Fintech",
+      "Compliance"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:31:02.992Z"
+  },
+  {
+    "slug": "ironcladhq",
+    "industries": [
+      "B2B",
+      "Legal"
+    ],
+    "tags": [
+      "SaaS",
+      "LegalTech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:56:06.278Z"
+  },
+  {
+    "slug": "kastle",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:18:23.668Z"
+  },
+  {
+    "slug": "kombo",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:40.283Z"
+  },
+  {
+    "slug": "latent",
+    "industries": [
+      "Healthcare",
+      "Healthcare IT"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "B2B",
+      "Healthcare",
+      "Insurance",
+      "Enterprise"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:54.002Z"
+  },
+  {
+    "slug": "linear",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "litellm",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "AIOps",
+      "Developer Tools",
+      "Generative AI",
+      "Open Source",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:30:12.658Z"
+  },
+  {
+    "slug": "loula",
+    "industries": [
+      "Healthcare",
+      "Healthcare Services"
+    ],
+    "tags": [
+      "Health Tech",
+      "Digital Health",
+      "Healthcare",
+      "Health Insurance",
+      "Women's Health"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:31:24.389Z"
+  },
+  {
+    "slug": "lucis",
+    "industries": [
+      "Healthcare",
+      "Consumer Health and Wellness"
+    ],
+    "tags": [
+      "Telehealth",
+      "Digital Health",
+      "Health & Wellness",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:09:06.282Z"
+  },
+  {
+    "slug": "magicpatterns",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:34:01.455Z"
+  },
+  {
+    "slug": "mastra",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Developer Tools",
+      "Open Source",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:11:07.448Z"
+  },
+  {
+    "slug": "mem0",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Developer Tools",
+      "Generative AI",
+      "Open Source",
+      "Infrastructure",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:20:44.736Z"
+  },
+  {
+    "slug": "mercura",
+    "industries": [
+      "B2B",
+      "Sales"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:10:31.480Z"
+  },
+  {
+    "slug": "metriport",
+    "industries": [
+      "Healthcare",
+      "Healthcare IT"
+    ],
+    "tags": [
+      "B2B",
+      "Digital Health",
+      "Healthcare",
+      "API",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:44.472Z"
+  },
+  {
+    "slug": "momentic",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Developer Tools",
+      "B2B",
+      "Enterprise Software"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:48.493Z"
+  },
+  {
+    "slug": "mux",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Developer Tools",
+      "Video",
+      "API"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:54:59.418Z"
+  },
+  {
+    "slug": "nango",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "Developer Tools",
+      "SaaS",
+      "Open Source",
+      "API"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:47.036Z"
+  },
+  {
+    "slug": "notion",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "nox-metals",
+    "industries": [
+      "Industrials",
+      "Manufacturing and Robotics"
+    ],
+    "tags": [
+      "Manufacturing"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:04:33.175Z"
+  },
+  {
+    "slug": "numeral",
+    "industries": [
+      "B2B",
+      "Finance and Accounting"
+    ],
+    "tags": [
+      "Fintech",
+      "SaaS",
+      "Finance",
+      "Compliance",
+      "E-commerce"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:44.427Z"
+  },
+  {
+    "slug": "offdeal",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Fintech",
+      "B2B",
+      "SMB"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:23:03.407Z"
+  },
+  {
+    "slug": "oneleet",
+    "industries": [
+      "B2B",
+      "Security"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Compliance",
+      "Security",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:06.482Z"
+  },
+  {
+    "slug": "onyx",
+    "industries": [
+      "B2B",
+      "Productivity"
+    ],
+    "tags": [
+      "Open Source",
+      "NLP",
+      "Enterprise",
+      "Search",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:25:35.617Z"
+  },
+  {
+    "slug": "outset",
+    "industries": [
+      "B2B",
+      "Analytics"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Market Research",
+      "Enterprise Software",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:28:22.096Z"
+  },
+  {
+    "slug": "paradigmai",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:24.658Z"
+  },
+  {
+    "slug": "pear-vc",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "Developer Tools",
+      "B2B",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:21:39.674Z"
+  },
+  {
+    "slug": "permitflow",
+    "industries": [
+      "Real Estate and Construction",
+      "Construction"
+    ],
+    "tags": [
+      "GovTech",
+      "Construction",
+      "Proptech",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:41:39.307Z"
+  },
+  {
+    "slug": "phonely",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:19:59.756Z"
+  },
+  {
+    "slug": "pingo",
+    "industries": [
+      "Consumer"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:08:06.385Z"
+  },
+  {
+    "slug": "pirros",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:32:58.076Z"
+  },
+  {
+    "slug": "pointone",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Legal",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:26.813Z"
+  },
+  {
+    "slug": "polymath",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:00:35.741Z"
+  },
+  {
+    "slug": "prox",
+    "industries": [
+      "B2B",
+      "Retail"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Customer Success",
+      "E-commerce",
+      "Customer Support"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:07:59.915Z"
+  },
+  {
+    "slug": "pulse",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:18:36.867Z"
+  },
+  {
+    "slug": "pylon-labs",
+    "industries": [
+      "B2B",
+      "Operations"
+    ],
+    "tags": [
+      "B2B",
+      "Customer Success",
+      "Customer Support",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:31:13.127Z"
+  },
+  {
+    "slug": "quindar",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "SaaS",
+      "Space Exploration",
+      "Satellites",
+      "Aerospace"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:35.637Z"
+  },
+  {
+    "slug": "rallyuxr",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Design Tools"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:39:52.101Z"
+  },
+  {
+    "slug": "ramp",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "reacher",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "B2B",
+      "E-commerce",
+      "Creator Economy"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:05:20.786Z"
+  },
+  {
+    "slug": "retell-ai",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:21:55.554Z"
+  },
+  {
+    "slug": "rollstack",
+    "industries": [
+      "B2B",
+      "Analytics"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Productivity",
+      "Analytics",
+      "Data Visualization"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:59.226Z"
+  },
+  {
+    "slug": "ryvn",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Developer Tools",
+      "SaaS",
+      "DevOps",
+      "Infrastructure"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:13:58.323Z"
+  },
+  {
+    "slug": "safetykit",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Fintech",
+      "Compliance",
+      "Trust & Safety"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:27:02.723Z"
+  },
+  {
+    "slug": "salespatriot",
+    "industries": [
+      "B2B",
+      "Operations"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Sales",
+      "AI",
+      "Industrial"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:12:38.300Z"
+  },
+  {
+    "slug": "salient",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Fintech",
+      "Generative AI",
+      "B2B",
+      "Operations",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:32.012Z"
+  },
+  {
+    "slug": "saturn",
+    "industries": [
+      "Fintech"
+    ],
+    "tags": [
+      "Fintech",
+      "Generative AI",
+      "B2B"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:18:14.136Z"
+  },
+  {
+    "slug": "sim",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:09:31.665Z"
+  },
+  {
+    "slug": "simple-ai",
+    "industries": [
+      "B2B",
+      "Sales"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Sales",
+      "Call Center",
+      "Operations",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:17:08.354Z"
+  },
+  {
+    "slug": "sola",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Robotic Process Automation",
+      "Workflow Automation",
+      "Automation"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:27:05.777Z"
+  },
+  {
+    "slug": "solidroad",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:11:38.302Z"
+  },
+  {
+    "slug": "solva",
+    "industries": [
+      "Fintech",
+      "Insurance"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:06:07.411Z"
+  },
+  {
+    "slug": "solveintelligence",
+    "industries": [
+      "B2B",
+      "Legal"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:28:50.407Z"
+  },
+  {
+    "slug": "stilta",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:01:18.855Z"
+  },
+  {
+    "slug": "stradahq",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "SaaS",
+      "B2B",
+      "Insurance"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:26:27.356Z"
+  },
+  {
+    "slug": "subsets",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "Machine Learning",
+      "B2B",
+      "Enterprise Software",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:28:43.500Z"
+  },
+  {
+    "slug": "sygaldry-technologies",
+    "industries": [
+      "Industrials"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:08:48.250Z"
+  },
+  {
+    "slug": "tekton-dynamics",
+    "industries": [
+      "Industrials",
+      "Manufacturing and Robotics"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Robotics",
+      "Manufacturing",
+      "Industrial"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:25:04.561Z"
+  },
+  {
+    "slug": "tennr",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "SaaS",
+      "Workflow Automation",
+      "Healthcare"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:33:29.385Z"
+  },
+  {
+    "slug": "truthsystems",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "B2B"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:07:34.063Z"
+  },
+  {
+    "slug": "tuesday-labs",
+    "industries": [
+      "Consumer",
+      "Consumer Electronics"
+    ],
+    "tags": [
+      "Robotics",
+      "Consumer",
+      "Gaming",
+      "Electronics",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:24:46.265Z"
+  },
+  {
+    "slug": "usul",
+    "industries": [
+      "Government"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Generative AI",
+      "GovTech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:16:07.713Z"
+  },
+  {
+    "slug": "verge-genomics",
+    "industries": [
+      "Healthcare",
+      "Drug Discovery and Delivery"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:55:35.462Z"
+  },
+  {
+    "slug": "vitalize",
+    "industries": [
+      "Healthcare"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Healthcare"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:31:38.008Z"
+  },
+  {
+    "slug": "workweave",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "tags": [
+      "B2B",
+      "Analytics",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:12:40.127Z"
+  },
+  {
+    "slug": "zeit-ai",
+    "industries": [
+      "B2B",
+      "Analytics"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:17:42.309Z"
+  }
 ]

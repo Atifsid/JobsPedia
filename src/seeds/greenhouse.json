@@ -1,6 +1,190 @@
 [
-  { "slug": "airbnb", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
-  { "slug": "cloudflare", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
-  { "slug": "figma", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
-  { "slug": "stripe", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" }
+  {
+    "slug": "airbnb",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "amplitude",
+    "industries": [
+      "B2B",
+      "Analytics"
+    ],
+    "tags": [
+      "Developer Tools",
+      "B2B",
+      "Analytics",
+      "Marketing",
+      "Data Visualization"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:53:16.696Z"
+  },
+  {
+    "slug": "cloudflare",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "figma",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "flexport",
+    "industries": [
+      "B2B",
+      "Supply Chain and Logistics"
+    ],
+    "tags": [
+      "SaaS",
+      "Logistics",
+      "Supply Chain"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:53:39.902Z"
+  },
+  {
+    "slug": "ginkgobioworks",
+    "industries": [
+      "Healthcare",
+      "Industrial Bio"
+    ],
+    "tags": [
+      "Synthetic Biology",
+      "Diagnostics",
+      "Automation"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:53:20.537Z"
+  },
+  {
+    "slug": "givecampus",
+    "industries": [
+      "Education"
+    ],
+    "tags": [
+      "Education",
+      "Fintech",
+      "SaaS",
+      "B2B"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:55:29.192Z"
+  },
+  {
+    "slug": "humaninterest",
+    "industries": [
+      "B2B",
+      "Human Resources"
+    ],
+    "tags": [
+      "Fintech",
+      "SaaS",
+      "Human Resources",
+      "HR Tech",
+      "Investing"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:55:03.862Z"
+  },
+  {
+    "slug": "icarus",
+    "industries": [
+      "Industrials",
+      "Defense"
+    ],
+    "tags": [
+      "Hardware",
+      "Aerospace"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:03:02.322Z"
+  },
+  {
+    "slug": "podium81",
+    "industries": [
+      "B2B",
+      "Retail"
+    ],
+    "tags": [
+      "Fintech",
+      "SaaS",
+      "B2B",
+      "AI"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:53:55.229Z"
+  },
+  {
+    "slug": "pumpcareers",
+    "industries": [
+      "Fintech"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "FinOps",
+      "Fintech",
+      "SaaS",
+      "B2B"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:35:05.301Z"
+  },
+  {
+    "slug": "razorpaysoftwareprivatelimited",
+    "industries": [
+      "Fintech",
+      "Payments"
+    ],
+    "tags": [
+      "Banking as a Service",
+      "Fintech",
+      "Payments",
+      "India"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:54:02.908Z"
+  },
+  {
+    "slug": "spaceium",
+    "industries": [
+      "Industrials",
+      "Aviation and Space"
+    ],
+    "tags": [
+      "Hard Tech",
+      "Robotics",
+      "Space Exploration",
+      "Aerospace"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:20:40.728Z"
+  },
+  {
+    "slug": "stripe",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "tempo",
+    "industries": [
+      "Healthcare",
+      "Consumer Health and Wellness"
+    ],
+    "tags": [
+      "Machine Learning",
+      "Consumer Health Services"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:56:36.341Z"
+  }
 ]

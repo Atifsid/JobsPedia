@@ -1,5 +1,78 @@
 [
-  { "slug": "achievers", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
-  { "slug": "gohighlevel", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" },
-  { "slug": "q-ctrl", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" }
+  {
+    "slug": "achievers",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "gohighlevel",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "mashgin",
+    "industries": [
+      "B2B",
+      "Retail"
+    ],
+    "tags": [
+      "Artificial Intelligence",
+      "Cashierless Checkout",
+      "Deep Learning",
+      "Hardware",
+      "Computer Vision"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:56:14.749Z"
+  },
+  {
+    "slug": "maverickx",
+    "industries": [
+      "Industrials",
+      "Energy"
+    ],
+    "tags": [
+      "Energy"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:36:50.792Z"
+  },
+  {
+    "slug": "q-ctrl",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "suger",
+    "industries": [
+      "B2B",
+      "Sales"
+    ],
+    "tags": [
+      "Marketplace",
+      "SaaS",
+      "B2B",
+      "Sales"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:32:38.772Z"
+  },
+  {
+    "slug": "tovala",
+    "industries": [
+      "Consumer",
+      "Home and Personal"
+    ],
+    "tags": [
+      "Food & Beverage"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:54:49.573Z"
+  }
 ]

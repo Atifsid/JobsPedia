@@ -1,3 +1,19 @@
 [
-  { "slug": "personio", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" }
+  {
+    "slug": "didit",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:02:04.780Z"
+  },
+  {
+    "slug": "personio",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  }
 ]

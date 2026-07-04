@@ -1,3 +1,22 @@
 [
-  { "slug": "new-incentives", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" }
+  {
+    "slug": "circle-medical",
+    "industries": [
+      "Healthcare",
+      "Consumer Health and Wellness"
+    ],
+    "tags": [
+      "Consumer Health Services",
+      "Primary Care"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:55:25.572Z"
+  },
+  {
+    "slug": "new-incentives",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  }
 ]

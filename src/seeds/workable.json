@@ -1,3 +1,36 @@
 [
-  { "slug": "jobrack", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-03T00:00:00Z" }
+  {
+    "slug": "hokali",
+    "industries": [
+      "B2B",
+      "Marketing"
+    ],
+    "tags": [
+      "Marketplace",
+      "Edtech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:41:56.271Z"
+  },
+  {
+    "slug": "jobrack",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-03T00:00:00Z"
+  },
+  {
+    "slug": "malama-health",
+    "industries": [
+      "Healthcare"
+    ],
+    "tags": [
+      "Health Tech",
+      "Digital Health",
+      "Healthcare",
+      "Femtech"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:36:45.745Z"
+  }
 ]

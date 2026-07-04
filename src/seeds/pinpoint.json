@@ -1,3 +1,21 @@
 [
-  { "slug": "workwithus", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-04T00:00:00Z" }
+  {
+    "slug": "magic",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [
+      "B2B",
+      "AI Assistant"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T12:56:48.289Z"
+  },
+  {
+    "slug": "workwithus",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-04T00:00:00Z"
+  }
 ]

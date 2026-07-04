@@ -1,3 +1,25 @@
 [
-  { "slug": "cars-and-bids-job-board", "industries": [], "tags": [], "source": "manual", "discoveredAt": "2026-07-04T00:00:00Z" }
+  {
+    "slug": "agencycyber",
+    "industries": [
+      "B2B",
+      "Security"
+    ],
+    "tags": [
+      "SaaS",
+      "B2B",
+      "Compliance",
+      "Security",
+      "Enterprise"
+    ],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-04T13:41:00.700Z"
+  },
+  {
+    "slug": "cars-and-bids-job-board",
+    "industries": [],
+    "tags": [],
+    "source": "manual",
+    "discoveredAt": "2026-07-04T00:00:00Z"
+  }
 ]
