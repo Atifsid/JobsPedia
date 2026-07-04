@@ -1,0 +1,32 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Acme Corp",
+  "items": [
+    {
+      "id": "f99143ab-1111",
+      "title": "Senior Legal Counsel",
+      "url": "https://acme.teamtailor.com/jobs/8002146-senior-legal-counsel",
+      "date_published": "2026-06-01T13:55:38+02:00",
+      "content_html": "<p>Join our legal team.</p>",
+      "_jobposting": {
+        "@type": "JobPosting",
+        "datePosted": "2026-06-01T13:55:38+02:00",
+        "hiringOrganization": { "name": "Acme Corp" },
+        "jobLocation": [{ "address": { "addressLocality": "Stockholm", "addressCountry": "SE" } }]
+      }
+    },
+    {
+      "id": "f99143ab-2222",
+      "title": "Remote Support Engineer",
+      "url": "https://acme.teamtailor.com/jobs/8002147-remote-support-engineer",
+      "date_published": "2026-06-02T09:00:00+02:00",
+      "content_html": "<p>Help our customers remotely.</p>",
+      "_jobposting": {
+        "@type": "JobPosting",
+        "datePosted": "2026-06-02T09:00:00+02:00",
+        "hiringOrganization": { "name": "Acme Corp" },
+        "jobLocation": []
+      }
+    }
+  ]
+}
