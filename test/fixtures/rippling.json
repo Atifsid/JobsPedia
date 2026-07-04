@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "job-1",
+      "name": "Senior Backend Engineer",
+      "url": "https://ats.rippling.com/cars-and-bids-job-board/jobs/job-1",
+      "locations": [
+        { "name": "Remote (United States)", "country": "United States", "countryCode": "US", "workplaceType": "REMOTE" }
+      ]
+    },
+    {
+      "id": "job-2",
+      "name": "Support Associate",
+      "url": "https://ats.rippling.com/cars-and-bids-job-board/jobs/job-2",
+      "locations": [
+        { "name": "Los Angeles, CA", "country": "United States", "countryCode": "US", "workplaceType": "ONSITE" }
+      ]
+    }
+  ],
+  "page": 0,
+  "pageSize": 2,
+  "totalItems": 3,
+  "totalPages": 2
+}
