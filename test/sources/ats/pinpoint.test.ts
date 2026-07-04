@@ -10,7 +10,7 @@ const fixture = JSON.parse(
 describe("pinpoint provider", () => {
   afterEach(() => vi.unstubAllGlobals());
 
-  it("maps postings into the canonical schema", async () => {
+  it("maps the {data: [...]} wrapper response into the canonical schema", async () => {
     const fetchMock = vi.fn(async () => ({ ok: true, json: async () => fixture }));
     vi.stubGlobal("fetch", fetchMock);
 

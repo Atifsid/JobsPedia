@@ -26,7 +26,7 @@ interface PinpointPosting {
 }
 
 interface PinpointResponse {
-  postings: PinpointPosting[];
+  data: PinpointPosting[];
 }
 
 function toJob(raw: PinpointPosting, tenant: string): NewJob {
@@ -58,18 +58,7 @@ function toJob(raw: PinpointPosting, tenant: string): NewJob {
 export const pinpoint: AtsScraper = {
   platform: "pinpoint",
   async fetch(tenant: string): Promise<NewJob[]> {
-    const response = await fetchJson<PinpointResponse | PinpointPosting[]>(`https://${tenant}.pinpointhq.com/postings.json`);
-    // Handle both array and wrapper object formats
-    let postings: PinpointPosting[];
-    if (Array.isArray(response)) {
-      postings = response;
-    } else if (response && typeof response === "object" && "postings" in response) {
-      postings = (response as PinpointResponse).postings;
-    } else {
-      // If neither format matches, default to empty array to prevent error
-      console.error("[pinpoint] unexpected response format:", typeof response, Object.keys(response ?? {}));
-      postings = [];
-    }
+    const { data: postings } = await fetchJson<PinpointResponse>(`https://${tenant}.pinpointhq.com/postings.json`);
     return mapSkipInvalid(postings, (p) => toJob(p, tenant), "pinpoint");
   },
 };
