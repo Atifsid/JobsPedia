@@ -2,10 +2,13 @@ import { describe, expect, it } from "vitest";
 import { atsSeeds } from "../src/config.js";
 
 describe("atsSeeds (loaded from src/seeds/*.json)", () => {
-  it("loads all 25 seeds across 18 platforms, unchanged in slug/platform", () => {
-    expect(atsSeeds).toHaveLength(25);
+  it("loads the 25 originally hand-picked manual seeds across 18 platforms, unchanged in slug/platform", () => {
+    // Scoped to source: "manual" — yc-discovery seeds grow over time as `discover-seeds` runs,
+    // so asserting an exact total/list here would break on every successful discovery run.
+    const manualSeeds = atsSeeds.filter((seed) => seed.source === "manual");
+    expect(manualSeeds).toHaveLength(25);
     const byPlatform = new Map<string, string[]>();
-    for (const seed of atsSeeds) {
+    for (const seed of manualSeeds) {
       byPlatform.set(seed.platform, [...(byPlatform.get(seed.platform) ?? []), seed.slug]);
     }
     expect(byPlatform.get("greenhouse")?.sort()).toEqual(["airbnb", "cloudflare", "figma", "stripe"]);

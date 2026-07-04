@@ -74,4 +74,20 @@ describe("detectAts", () => {
     stubFetchText({ "/careers": '<a href="https://jobs.jobvite.com/careers/acme/jobs">Careers</a>' });
     await expect(detectAts("https://acme.com")).resolves.toEqual({ platform: "jobvite", slug: "acme" });
   });
+
+  it("extracts the real slug from a Greenhouse embed-widget script's for= param, not the literal 'embed' path segment", async () => {
+    stubFetchText({
+      "/careers": '<script src="https://boards.greenhouse.io/embed/job_board/js?for=stripe"></script>',
+    });
+    await expect(detectAts("https://stripe.com")).resolves.toEqual({ platform: "greenhouse", slug: "stripe" });
+  });
+
+  it("does not false-positive-match the literal word 'embed' when the widget script has no for= param", async () => {
+    stubFetchText({
+      "/careers": '<script src="https://boards.greenhouse.io/embed/job_board/js"></script>',
+      "/jobs": null,
+      "/": null,
+    });
+    await expect(detectAts("https://acme.com")).resolves.toBeNull();
+  });
 });

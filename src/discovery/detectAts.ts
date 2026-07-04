@@ -17,7 +17,11 @@ export interface AtsMatch {
  * from a career-page URL alone (see `src/sources/ats/comeet.ts`).
  */
 const ATS_DOMAIN_PATTERNS: { platform: Platform; pattern: RegExp }[] = [
-  { platform: "greenhouse", pattern: /(?:job-)?boards\.greenhouse\.io\/([a-z0-9-]+)/i },
+  // Checked before the generic pattern below: Greenhouse's embeddable JS widget snippet
+  // (`<script src=".../embed/job_board/js?for=acme">`) puts the real slug in a `for=` query
+  // param — the generic pattern would otherwise capture the literal path segment "embed".
+  { platform: "greenhouse", pattern: /boards\.greenhouse\.io\/embed\/job_board\/js\?for=([a-z0-9-]+)/i },
+  { platform: "greenhouse", pattern: /(?:job-)?boards\.greenhouse\.io\/(?!embed(?:\/|\?|$))([a-z0-9-]+)/i },
   { platform: "lever", pattern: /jobs\.lever\.co\/([a-z0-9-]+)/i },
   { platform: "ashby", pattern: /jobs\.ashbyhq\.com\/([a-z0-9-]+)/i },
   { platform: "workable", pattern: /apply\.workable\.com\/([a-z0-9-]+)/i },
