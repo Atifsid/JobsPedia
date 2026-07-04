@@ -125,6 +125,14 @@ choices made:
   `npm run crawl -- --scope <name>` run therefore never marks any ATS job inactive, even if it
   vanished from a company that was actually crawled this run — full, unscoped runs remain the
   source of truth for ATS staleness.
+- **Tier 2 API providers scope their fetches per search term/category, not the full board.**
+  The Muse (~400K total jobs) and Himalayas (~100K) are far larger than RemoteOK/Remotive
+  (a few thousand each) — pulling their entire board unfiltered every crawl isn't practical.
+  Each of the 4 newer API providers (`src/sources/apis/{themuse,remotejobsorg,himalayas,adzuna}.ts`)
+  loops its own curated keyword/category list in `config.ts`, bounded per source to whatever
+  that source's real published constraint is (Adzuna: a hard 250-calls/day quota, so the
+  term x country list is kept small; the 3 keyless sources: no published call-count limit found,
+  so pagination is bounded instead for local data volume/relevance, not API politeness).
 
 ## Seeded ATS slugs
 
@@ -148,14 +156,34 @@ the time of writing — see `src/config.ts`):
 ## API providers
 
 Unlike ATS platforms (which you seed per company), API providers return their entire
-board in one call — no per-company configuration. Two providers are currently included:
+board in one call — no per-company configuration. Six providers are currently included:
 
-| Platform  | Coverage |
-|-----------|----------|
-| RemoteOK  | Remote-first job board (~20k listings) |
-| Remotive  | Remote software jobs globally |
+| Platform      | Coverage |
+|---------------|----------|
+| RemoteOK      | Remote-first job board (~20k listings) |
+| Remotive      | Remote software jobs globally |
+| The Muse      | General job board, scoped to a few tech categories (`museConfig` in `src/config.ts`) |
+| RemoteJobs.org | Remote-only job board, scoped to programming roles |
+| Himalayas     | Remote-only job board, scoped to a curated list of tech search terms (`himalayasConfig`) |
+| Adzuna        | General job board across the US and UK, scoped to a curated tech search-term list (`adzunaConfig`) — **requires a free API key** |
 
-Both run as part of the default `npm run crawl` (no `--only` flag needed).
+All six run as part of the default `npm run crawl` (no `--only` flag needed).
+
+### Setup: Adzuna's free API key
+
+Adzuna is the only source that needs credentials. Register a free key at
+[developer.adzuna.com](https://developer.adzuna.com) (email signup, no cost), then set two
+environment variables before running the crawl (see `.env.example`):
+
+```bash
+export ADZUNA_APP_ID=your-app-id
+export ADZUNA_APP_KEY=your-app-key
+npm run crawl
+```
+
+If these aren't set, `npm run crawl` still works — Adzuna is skipped with a logged warning,
+same as any other source that fails, and every other provider (ATS, RemoteOK, Remotive, The
+Muse, RemoteJobs.org, Himalayas) still runs normally.
 
 ## Remote/visa sponsorship filtering
 

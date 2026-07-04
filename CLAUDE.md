@@ -71,6 +71,11 @@ src/
       base.ts        # ApiProvider interface (no-seed, direct-fetch APIs)
       remoteok.ts
       remotive.ts
+      themuse.ts        # scoped to museConfig.categories, bounded pages/category
+      remotejobsorg.ts   # scoped to remoteJobsOrgCategories, fully paginated (small board)
+      himalayas.ts         # scoped to himalayasConfig.searchTerms, bounded pages/term
+      adzuna.ts              # scoped to adzunaConfig.searchTerms x countries; needs
+                             # ADZUNA_APP_ID/ADZUNA_APP_KEY env vars (see README Setup)
       index.ts       # registry: exported list of all API providers
   discovery/
     ycombinator.ts    # YC Algolia company-directory fetch (paginated, isHiring:true)
