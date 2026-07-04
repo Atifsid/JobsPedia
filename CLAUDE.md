@@ -219,7 +219,7 @@ the Python version). Not worth it. Only add one if a must-have company forces it
 ## Adding an API provider
 
 Unlike ATS scrapers (which fetch per-company via a slug), API providers return their
-entire board in one call — no per-company scoping. RemoteOK and Remotive are the
+entire board in one call — no per-company scoping. RemoteOK and Remotive are two
 current examples. The interface is simpler:
 
 1. Create `src/sources/apis/<platform>.ts` implementing `ApiProvider` from `base.ts`:

@@ -6,7 +6,8 @@ API:
 1. **ATS-direct** sources (Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
    Recruitee, Comeet, BreezyHR, JobScore, Personio, BambooHR) via thin hand-written
    fetchers that hit each platform's public JSON/XML API.
-2. **API providers** (RemoteOK, Remotive) that return their entire board in one call.
+2. **API providers** (RemoteOK, Remotive, The Muse, RemoteJobs.org, Himalayas, Adzuna)
+   that return their entire board in one call.
 3. **Aggregator boards** (LinkedIn, Indeed, Glassdoor, …) via the `jobspy-js` npm
    package.
 
@@ -33,7 +34,7 @@ curl -X POST http://localhost:8080/jobs/search \
 ```bash
 npm run crawl                 # ATS + API crawl (same as --only ats; aggregators off by default)
 npm run crawl -- --only ats   # same as bare npm run crawl — ATS + API providers
-npm run crawl -- --only apis  # API-only crawl (RemoteOK, Remotive)
+npm run crawl -- --only apis  # API-only crawl (all 6 API providers)
 npm run crawl -- --only aggregators   # jobspy-js crawl (LinkedIn/Indeed/Glassdoor)
 npm run crawl -- --scope <name>       # filter ATS seeds by YC industry/tag before crawling
 npm run discover-seeds                # grow src/seeds/*.json from YC's company directory
@@ -48,7 +49,7 @@ npm test                      # vitest
 Ambiguities encountered while building this from the `CLAUDE.md` spec, and the
 choices made:
 
-- **Default crawl includes ATS + APIs (RemoteOK, Remotive), but aggregators stay off.**
+- **Default crawl includes ATS + APIs (all 6 providers), but aggregators stay off.**
   Plain `npm run crawl` and `npm run crawl -- --only ats` behave identically — both run ATS
   and API providers together. Aggregators (LinkedIn/Indeed/Glassdoor) remain opt-in only via
   `npm run crawl -- --only aggregators`.
