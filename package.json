@@ -5,8 +5,11 @@
   "type": "module",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": ">=22.9.0"
+  },
   "scripts": {
-    "crawl": "tsx src/crawl.ts",
+    "crawl": "tsx --env-file-if-exists=.env src/crawl.ts",
     "discover-seeds": "tsx scripts/discover-seeds.ts",
     "serve": "tsx src/server.ts",
     "typecheck": "tsc --noEmit",

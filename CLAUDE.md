@@ -36,7 +36,8 @@ rate-limited (LinkedIn especially, ~page 10). All scraping happens in the crawl.
 
 ## Tech stack
 
-- Node 20+, TypeScript (ESM), `tsx` to run scripts
+- Node 22.9+ (required for `--env-file-if-exists`, which `npm run crawl` uses to load `.env`),
+  TypeScript (ESM), `tsx` to run scripts
 - `jobspy-js` — aggregator scraping. Do NOT reimplement this half.
 - `better-sqlite3` — storage. Synchronous, single-file, WAL mode.
 - `hono` + `@hono/node-server` — the local read API

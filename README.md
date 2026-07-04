@@ -183,8 +183,17 @@ All six run as part of the default `npm run crawl` (no `--only` flag needed).
 ### Setup: Adzuna's free API key
 
 Adzuna is the only source that needs credentials. Register a free key at
-[developer.adzuna.com](https://developer.adzuna.com) (email signup, no cost), then set two
-environment variables before running the crawl (see `.env.example`):
+[developer.adzuna.com](https://developer.adzuna.com) (email signup, no cost), then either:
+
+```bash
+cp .env.example .env
+# fill in ADZUNA_APP_ID and ADZUNA_APP_KEY in .env
+npm run crawl
+```
+
+— `npm run crawl` loads `.env` automatically via Node's `--env-file-if-exists` flag (requires
+Node 22.9+) — or export them directly in your shell instead, if you prefer not to use a `.env`
+file:
 
 ```bash
 export ADZUNA_APP_ID=your-app-id
@@ -192,7 +201,7 @@ export ADZUNA_APP_KEY=your-app-key
 npm run crawl
 ```
 
-If these aren't set, `npm run crawl` still works — Adzuna is skipped with a logged warning,
+If neither is set, `npm run crawl` still works — Adzuna is skipped with a logged warning,
 same as any other source that fails, and every other provider (ATS, RemoteOK, Remotive, The
 Muse, RemoteJobs.org, Himalayas) still runs normally.
 
