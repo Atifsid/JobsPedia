@@ -1,0 +1,53 @@
+{
+  "comments": "test fixture",
+  "updatedAt": 1783090385,
+  "offset": 0,
+  "limit": 20,
+  "totalCount": 2,
+  "jobs": [
+    {
+      "title": "Senior Backend Engineer",
+      "excerpt": "Build great things.",
+      "companyName": "Acme Corp",
+      "companySlug": "acme-corp",
+      "companyLogo": "",
+      "employmentType": "Full Time",
+      "minSalary": 120000,
+      "maxSalary": 160000,
+      "salaryPeriod": "annual",
+      "seniority": ["Senior"],
+      "currency": "USD",
+      "locationRestrictions": ["United States"],
+      "timezoneRestrictions": [-8, -5],
+      "categories": ["Software-Engineering"],
+      "parentCategories": ["Developer"],
+      "description": "Build great things.",
+      "pubDate": 1780000000,
+      "expiryDate": 1787345953,
+      "applicationLink": "https://himalayas.app/companies/acme-corp/jobs/senior-backend-engineer",
+      "guid": "https://himalayas.app/companies/acme-corp/jobs/senior-backend-engineer"
+    },
+    {
+      "title": "Support Engineer",
+      "excerpt": "Help our customers.",
+      "companyName": "Acme Corp",
+      "companySlug": "acme-corp",
+      "companyLogo": "",
+      "employmentType": "Full Time",
+      "minSalary": null,
+      "maxSalary": null,
+      "salaryPeriod": null,
+      "seniority": [],
+      "currency": null,
+      "locationRestrictions": [],
+      "timezoneRestrictions": [],
+      "categories": ["Customer-Support"],
+      "parentCategories": ["Support"],
+      "description": "Help our customers.",
+      "pubDate": 1782000000,
+      "expiryDate": 1787345953,
+      "applicationLink": "https://himalayas.app/companies/acme-corp/jobs/support-engineer",
+      "guid": "https://himalayas.app/companies/acme-corp/jobs/support-engineer"
+    }
+  ]
+}
