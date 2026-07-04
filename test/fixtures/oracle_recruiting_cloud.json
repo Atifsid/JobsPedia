@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "TotalJobsCount": 3,
+      "requisitionList": [
+        {
+          "Id": "210597507",
+          "Title": "Corporate Payments Sales Manager - Vice President",
+          "PostedDate": "2026-06-15",
+          "PrimaryLocation": "Tokyo-To, Japan",
+          "PrimaryLocationCountry": "JP",
+          "JobFamily": "Relationship Sales",
+          "JobFunction": "Client Management",
+          "ShortDescriptionStr": "Join the team as a HQ Payments Sales Manager.",
+          "WorkplaceType": "",
+          "workLocation": [
+            {
+              "LocationId": 300000161069536,
+              "LocationName": "31001-Tokyo Building",
+              "TownOrCity": "Tokyo",
+              "Country": "JP",
+              "Region2": "JP-13"
+            }
+          ]
+        },
+        {
+          "Id": "210597999",
+          "Title": "Remote Data Engineer",
+          "PostedDate": "2026-06-16",
+          "PrimaryLocation": "Remote, United States",
+          "PrimaryLocationCountry": "US",
+          "JobFamily": "Data & Analytics",
+          "JobFunction": "Engineering",
+          "ShortDescriptionStr": "Build our data platform.",
+          "WorkplaceType": "Remote",
+          "workLocation": []
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "hasMore": false,
+  "limit": 2,
+  "offset": 0,
+  "links": []
+}
