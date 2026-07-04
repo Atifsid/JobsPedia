@@ -1,0 +1,25 @@
+{
+  "positions": [
+    {
+      "id": 171841265954,
+      "name": "Cloud Engineer III",
+      "location": "Gurugram,India",
+      "department": "Managed Cloud",
+      "t_create": 1780223005,
+      "canonicalPositionUrl": "https://acme.eightfold.ai/careers/job/171841265954",
+      "work_location_option": "onsite",
+      "job_description": ""
+    },
+    {
+      "id": 171841265955,
+      "name": "Remote Data Analyst",
+      "location": "Remote,United States",
+      "department": "Analytics",
+      "t_create": 1780223100,
+      "canonicalPositionUrl": "https://acme.eightfold.ai/careers/job/171841265955",
+      "work_location_option": "remote",
+      "job_description": ""
+    }
+  ],
+  "count": 3
+}
