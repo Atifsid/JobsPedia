@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { atsSeeds } from "../src/config.js";
 
 describe("atsSeeds (loaded from src/seeds/*.json)", () => {
-  it("loads all 18 originally hand-picked seeds across 11 platforms, unchanged in slug/platform", () => {
-    expect(atsSeeds).toHaveLength(18);
+  it("loads all 25 seeds across 18 platforms, unchanged in slug/platform", () => {
+    expect(atsSeeds).toHaveLength(25);
     const byPlatform = new Map<string, string[]>();
     for (const seed of atsSeeds) {
       byPlatform.set(seed.platform, [...(byPlatform.get(seed.platform) ?? []), seed.slug]);
@@ -19,6 +19,13 @@ describe("atsSeeds (loaded from src/seeds/*.json)", () => {
     expect(byPlatform.get("smartrecruiters")).toEqual(["visa"]);
     expect(byPlatform.get("comeet")).toEqual(["61.003:16358C6EF2C61631639B558C0429"]);
     expect(byPlatform.get("bamboohr")).toEqual(["soundstripe"]);
+    expect(byPlatform.get("teamtailor")).toEqual(["oneflow"]);
+    expect(byPlatform.get("pinpoint")).toEqual(["workwithus"]);
+    expect(byPlatform.get("rippling")).toEqual(["cars-and-bids-job-board"]);
+    expect(byPlatform.get("oracle_recruiting_cloud")).toEqual(["jpmc.fa.oraclecloud.com:CX_1001"]);
+    expect(byPlatform.get("sap_successfactors")).toEqual(["job.schindler.com"]);
+    expect(byPlatform.get("eightfold")).toEqual(["insight:insight.com"]);
+    expect(byPlatform.get("jobvite")).toEqual(["carfax"]);
   });
 
   it("every seed has the extended fields --scope filtering and discovery provenance rely on", () => {

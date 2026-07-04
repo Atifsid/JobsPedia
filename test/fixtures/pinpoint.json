@@ -1,28 +1,30 @@
-[
-  {
-    "title": "Product Reliability Engineer",
-    "url": "https://workwithus.pinpointhq.com/postings/11111",
-    "path": "/postings/11111",
-    "compensation_minimum": 60000,
-    "compensation_maximum": 70000,
-    "compensation_currency": "GBP",
-    "employment_type_text": "Full time",
-    "workplace_type_text": "Remote",
-    "description": "<p>Build reliable systems.</p>",
-    "job": { "id": 11111, "requisition_id": "REQ-1", "department": "Engineering" },
-    "location": { "city": "London", "province": "England", "street_address": null }
-  },
-  {
-    "title": "Support Specialist",
-    "url": "https://workwithus.pinpointhq.com/postings/22222",
-    "path": "/postings/22222",
-    "compensation_minimum": null,
-    "compensation_maximum": null,
-    "compensation_currency": null,
-    "employment_type_text": "Full time",
-    "workplace_type_text": "On-site",
-    "description": "<p>Help our customers in person.</p>",
-    "job": { "id": 22222, "requisition_id": "REQ-2", "department": "Support" },
-    "location": { "city": "Manchester", "province": "England", "street_address": null }
-  }
-]
+{
+  "postings": [
+    {
+      "title": "Product Reliability Engineer",
+      "url": "https://workwithus.pinpointhq.com/postings/11111",
+      "path": "/postings/11111",
+      "compensation_minimum": 60000,
+      "compensation_maximum": 70000,
+      "compensation_currency": "GBP",
+      "employment_type_text": "Full time",
+      "workplace_type_text": "Remote",
+      "description": "<p>Build reliable systems.</p>",
+      "job": { "id": 11111, "requisition_id": "REQ-1", "department": "Engineering" },
+      "location": { "city": "London", "province": "England", "street_address": null }
+    },
+    {
+      "title": "Support Specialist",
+      "url": "https://workwithus.pinpointhq.com/postings/22222",
+      "path": "/postings/22222",
+      "compensation_minimum": null,
+      "compensation_maximum": null,
+      "compensation_currency": null,
+      "employment_type_text": "Full time",
+      "workplace_type_text": "On-site",
+      "description": "<p>Help our customers in person.</p>",
+      "job": { "id": 22222, "requisition_id": "REQ-2", "department": "Support" },
+      "location": { "city": "Manchester", "province": "England", "street_address": null }
+    }
+  ]
+}

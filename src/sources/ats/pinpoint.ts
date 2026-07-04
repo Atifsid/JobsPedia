@@ -25,6 +25,10 @@ interface PinpointPosting {
   location?: PinpointLocation | null;
 }
 
+interface PinpointResponse {
+  postings: PinpointPosting[];
+}
+
 function toJob(raw: PinpointPosting, tenant: string): NewJob {
   const locText = [raw.location?.city, raw.location?.province].filter(Boolean).join(", ") || null;
   const loc = parseLocation(locText);
@@ -54,7 +58,18 @@ function toJob(raw: PinpointPosting, tenant: string): NewJob {
 export const pinpoint: AtsScraper = {
   platform: "pinpoint",
   async fetch(tenant: string): Promise<NewJob[]> {
-    const postings = await fetchJson<PinpointPosting[]>(`https://${tenant}.pinpointhq.com/postings.json`);
+    const response = await fetchJson<PinpointResponse | PinpointPosting[]>(`https://${tenant}.pinpointhq.com/postings.json`);
+    // Handle both array and wrapper object formats
+    let postings: PinpointPosting[];
+    if (Array.isArray(response)) {
+      postings = response;
+    } else if (response && typeof response === "object" && "postings" in response) {
+      postings = (response as PinpointResponse).postings;
+    } else {
+      // If neither format matches, default to empty array to prevent error
+      console.error("[pinpoint] unexpected response format:", typeof response, Object.keys(response ?? {}));
+      postings = [];
+    }
     return mapSkipInvalid(postings, (p) => toJob(p, tenant), "pinpoint");
   },
 };
