@@ -8,13 +8,13 @@ export interface AtsMatch {
 
 /**
  * Hand-maintained per-platform career-page URL patterns (project convention: small,
- * explicit, copy-pasteable code over a generated/derived table). Only greenhouse, lever,
- * and ashby were live-verified against real YC companies during R&D (Ramp/Linear/Notion,
- * all Ashby) — the rest follow each platform's own known public-board host convention
- * (matching the host each `AtsScraper` already fetches from) and should be spot-checked
- * against a handful of real companies during rollout. `comeet` is deliberately excluded:
- * its `fetch()` needs a per-company token that isn't derivable from a career-page URL
- * alone (see `src/sources/ats/comeet.ts`).
+ * explicit, copy-pasteable code over a generated/derived table). Greenhouse, lever,
+ * ashby, teamtailor, pinpoint, rippling, and jobvite were live-verified against real
+ * companies during R&D — the rest follow each platform's own known public-board host
+ * convention (matching the host each `AtsScraper` already fetches from) and should be
+ * spot-checked against a handful of real companies during rollout. `comeet` is
+ * deliberately excluded: its `fetch()` needs a per-company token that isn't derivable
+ * from a career-page URL alone (see `src/sources/ats/comeet.ts`).
  */
 const ATS_DOMAIN_PATTERNS: { platform: Platform; pattern: RegExp }[] = [
   { platform: "greenhouse", pattern: /(?:job-)?boards\.greenhouse\.io\/([a-z0-9-]+)/i },
@@ -27,6 +27,10 @@ const ATS_DOMAIN_PATTERNS: { platform: Platform; pattern: RegExp }[] = [
   { platform: "recruitee", pattern: /([a-z0-9-]+)\.recruitee\.com/i },
   { platform: "smartrecruiters", pattern: /jobs\.smartrecruiters\.com\/([a-z0-9-]+)/i },
   { platform: "bamboohr", pattern: /([a-z0-9-]+)\.bamboohr\.com/i },
+  { platform: "teamtailor", pattern: /([a-z0-9-]+)\.teamtailor\.com/i },
+  { platform: "pinpoint", pattern: /([a-z0-9-]+)\.pinpointhq\.com/i },
+  { platform: "rippling", pattern: /ats\.rippling\.com\/([a-z0-9-]+)/i },
+  { platform: "jobvite", pattern: /jobs\.jobvite\.com\/careers\/([a-z0-9-]+)/i },
 ];
 
 /** Bounded, ordered candidate paths — stop at the first one that yields a match. */

@@ -54,4 +54,24 @@ describe("detectAts", () => {
     stubFetchText({ "/careers": '<a href="https://jobs.lever.co/ACME-Inc">Careers</a>' });
     await expect(detectAts("https://acme.com/")).resolves.toEqual({ platform: "lever", slug: "acme-inc" });
   });
+
+  it("detects a Teamtailor link", async () => {
+    stubFetchText({ "/careers": '<a href="https://acme.teamtailor.com/jobs">Open roles</a>' });
+    await expect(detectAts("https://acme.com")).resolves.toEqual({ platform: "teamtailor", slug: "acme" });
+  });
+
+  it("detects a Pinpoint link", async () => {
+    stubFetchText({ "/careers": '<a href="https://acme.pinpointhq.com/">Careers</a>' });
+    await expect(detectAts("https://acme.com")).resolves.toEqual({ platform: "pinpoint", slug: "acme" });
+  });
+
+  it("detects a Rippling link", async () => {
+    stubFetchText({ "/careers": '<a href="https://ats.rippling.com/acme-job-board">Careers</a>' });
+    await expect(detectAts("https://acme.com")).resolves.toEqual({ platform: "rippling", slug: "acme-job-board" });
+  });
+
+  it("detects a Jobvite link", async () => {
+    stubFetchText({ "/careers": '<a href="https://jobs.jobvite.com/careers/acme/jobs">Careers</a>' });
+    await expect(detectAts("https://acme.com")).resolves.toEqual({ platform: "jobvite", slug: "acme" });
+  });
 });
