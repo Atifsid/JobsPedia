@@ -1100,6 +1100,15 @@
     "discoveredAt": "2026-07-04T13:31:24.389Z"
   },
   {
+    "slug": "lua",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-09T13:01:00.104Z"
+  },
+  {
     "slug": "lucis",
     "industries": [
       "Healthcare",
@@ -1387,6 +1396,15 @@
     "tags": [],
     "source": "yc-discovery",
     "discoveredAt": "2026-07-04T13:32:58.076Z"
+  },
+  {
+    "slug": "ployai",
+    "industries": [
+      "B2B"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-09T13:00:05.480Z"
   },
   {
     "slug": "pointone",
@@ -1706,6 +1724,15 @@
     ],
     "source": "yc-discovery",
     "discoveredAt": "2026-07-04T13:28:43.500Z"
+  },
+  {
+    "slug": "sunflower-sober",
+    "industries": [
+      "Consumer"
+    ],
+    "tags": [],
+    "source": "yc-discovery",
+    "discoveredAt": "2026-07-09T13:01:18.921Z"
   },
   {
     "slug": "sygaldry-technologies",
